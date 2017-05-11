@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crear Evento</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+	<link href="../../../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../../css/barraInferior/estiloLobby.css" rel="stylesheet">
+	<link href="https:/fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+	<link href="../../../css/barraInferior/pickDeporte.css" rel="stylesheet">
+	<link href="../../../css/basicoResponsivo.css" rel="stylesheet" type="text/css" ><!--Basico para barras-->
+	<link href="../../../css/estiloBarras.css" rel="stylesheet">
+	<link href="../../../css/barraInferior/masOpciones.css" rel="stylesheet">
+</head>
+<body>
+	<!--BARRA SUPERIOR-->
+  <div id="barrasFinish"> 
+  <header>
+        <nav id="navCorredizo">
+             <ul>
+                <section id="Slogo"><img class ="img-responsive center-block" id="logo" src="../../../src/Logo-Gris.png"></section>
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Mis Eventos</a></li>
+                <li><a href="#">Configuración de cuenta</a></li>
+                <li><a href="#">Creditos</a></li>
+                <li><a href="#">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+
+   <nav id="navDer"></nav><!--Utilizado para que el slider se pueda cerrar afuera del mismo-->
+  <div class="row" id="superior">
+     <div class="menu_bar">
+      <div id="tap" class="col-xs-3 col-sm3 col-md-3 col-lg-3 ">
+         <a href="#"><img class ="img-responsive center-block .menu_bar2" src="../../../src/rayas.png"></a>
+      </div>
+      </div>
+
+      <div class="col-xs-3 col-sm3 col-md-3 col-lg-3">
+           <label for="labelUbicacion" ></label>
+      </div>
+      <div id="tap" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+           <a href="#"><img class ="img-responsive center-block" src="../../../src/lupa.png"></a>
+      </div>
+
+      <div id="tap" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+           <a href="#"><img class ="img-responsive center-block" src="../../../src/campana.png"></a>
+      </div>
+    </div>
+
+	</header>
+	<!--CONTENIDO DEL BODY-->
+	<div id="mainContainer"><!--SUPER CONTENEDOR DEL CONTENIDO DEL BODY -->
+
+		<div class="parte1">
+			<div >
+			<span>Nombre</span><input type="text" name="nombreEvento" placeholder="Nombre del evento" required>
+		  </div>
+			<div>
+				<span>Evento </span><input type="text" name="deporteEvento" placeholder="Deporte del evento" required>
+			</div>
+
+			<!--Para cristian-->
+			<div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+
+					<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox">
+						<div class="item active" id="active">
+							<img class="slider" src="../../../src/voley.png">
+							<img class="slider" src="../../../src/basket.png">
+							<img class="slider" src="../../../src/football.png">
+							<img class="slider" src="../../../src/basket.png">
+						</div>
+						<div class="item" id="active">
+							<img class="slider" src="../../../src/voley.png">
+							<img class="slider" src="../../../src/football.png">
+							<img class="slider" src="../../../src/tenis.png">
+							<img class="slider" src="../../../src/voley.png">
+						</div>
+					</div>
+
+					<!-- Left and right controls -->
+					<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="sr-only">Anterior</span>
+					</a>
+					<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span class="sr-only">Siguiente</span>
+					</a>
+				</div>
+				<!--Para cristian(Hasta aqui)-->
+
+		</div>
+
+		<!--Segundo DIV-->
+		<div class="parte2">
+				<div id="picker"><!--Numero de personas-->
+					<span>Número de personas</span><input id="numPersonas" type="number" min="1" max="99" placeholder="1" required>
+				</div>
+
+				<div id="pickerDate" ><!--Fecha-->
+					<span>Fecha</span>
+					<input id="dia" type="number" min="1" max="31" placeholder="01" required >/
+					<input id="mes" type="number" min="1" max="12" placeholder="01" required>/
+					<input id="year" type="number" min="2017" max="2099" placeholder="2017" required>
+				</div>
+
+				<div id="pickerTime"><!--Fecha-->
+					<span>Hora</span>
+					<input id="hora" type="number" min="1" max="24" placeholder="00" required>:
+					<input id="minuto" type="number" min="0" max="59" placeholder="00" required>
+				</div>
+
+				<div id="pickerPlace"><!--Fecha-->
+					<span>Lugar</span>
+					<input id="lugar" type="text" placeholder="Lugar de encuentro" required>
+				</div>			
+
+			</div>
+</div>
+
+<!--DIV CONTENEDOR-->
+<div class="parte1 parte3">	
+	<div>
+		<span>Género </span>
+    <div class="btn-group btn-group-sm">
+  <button type="button" class="btn btn-primary">M</button>
+  <button type="button" class="btn btn-primary">F</button>
+  <button type="button" class="btn btn-primary">Mixto</button>
+</div>
+
+  <h2>Rango de edades</h2>
+  <div>
+    		<div id="pickerAge"><!--Numero de personas-->
+    			<span>Entre</span>
+          <input type="number" min="5" max="99" placeholder="0" required>y
+          <input type="number" min="6" max="99" placeholder="0" required>
+    		</div>
+  </div>
+	</div>
+
+<!--PARTE DE NOTAS-->
+    <h2>Notas</h2>
+
+    <div id="notas">
+      <textarea value="wrap" rows="9" cols="50" id="editeNota" placeholder="Agrega comentarios adicionales de interes">
+</textarea>
+    </div>	
+			
+				<div id="guardar"><!--Botón Guardar-->
+					<center>
+					<button onclick="guardeDatos()" class="btn btn-default">Guardar</button>
+					</center>
+				</div>
+		
+	    </div>
+
+ <!--AQUI VA TODO EL CONTENIDO--> 
+	
+<!--BARRA INFERIOR-->
+<footer>
+   <div class="row" id="inferior">
+      <div id="tap" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <a href="#"><img class ="img-responsive center-block" id="tap" src="../../../src/casa.png"></a>
+      </div>
+      <div id="tap" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+       <a href="#"><img class ="img-responsive center-block" id="tap" src="../../../src/mas.png"></a>
+      </div>
+      <div id="tap" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+       <a href="#"><img class ="img-responsive center-block" id="tap" src="../../../src/ojo.png"></a>
+      </div>
+  </div>
+</footer>
+</div>
+
+	<script type="text/javascript" src="../../../js/jquery/jquery-1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../js/fastclick.js"></script>
+	<script type="text/javascript" src="../../../js/menu.js"></script>
+	<script type="text/javascript" src="../../../js/crearEvento/crearEvento.js"></script>
+	<script type="text/javascript" src="../../../js/crearEvento/masOpciones.js"></script>
+</body>
+</html>

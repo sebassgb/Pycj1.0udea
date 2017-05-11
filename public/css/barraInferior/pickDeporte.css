@@ -1,0 +1,177 @@
+
+body{
+  background-color:#46B279;
+}
+
+.carousel-inner{/*Lo que va dentro del carousel*/
+  background: white;
+  background-color: #1B8A59;
+}
+
+#active{
+  margin-left: 19%;
+}
+
+.slider{
+  float:left;
+  height: 7vh;
+  width: 9vw;
+  margin: 3%;
+  background-color: #1B8A59;
+}
+
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: white;
+    margin-left: 8%;
+    margin-right: 5%;
+}
+/*PARTE1 SE COMPONE PONER EL NOMBRE, NOMBRE DEL DEPORTE Y SLIDER DE DEPORTES*/
+
+.parte1, .parte2{
+  background-color: #1B8A59;
+}
+
+.parte1 {
+  margin-bottom: 2.5%;
+  padding-top: 13%;
+}
+.parte2{
+  margin-bottom: 2.5%;
+  margin-right: 7%;
+  margin-left: 7%;
+}
+
+@media screen and (min-width:350px){
+  .parte1{
+    padding-top:8.5%;
+  }
+
+  .parte2{
+    padding-bottom:21%;
+  }
+}
+
+@media screen and (min-height:375px){
+  .parte1{
+    padding-top:12%;
+  }
+  .parte2{
+    padding-bottom:12%;
+  }
+
+  .parte1 input, .parte2 input{
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}
+
+.parte1 input, .parte2 input{
+background-color: white;
+border-radius: 6px;
+font-weight: bold;
+min-width: 115px;
+min-height: 24px;
+color:gray;
+width: 55vw;
+margin-bottom: 1.25%;
+}
+
+.input-group-btn button{
+  width: 5vw;
+  height: 5vh;
+}
+
+.input-group-btn span{
+  background-color: white;
+}
+
+.input-group{
+  display: block;
+}
+
+#picker, #pickerDate, #pickerTime{
+  margin-top: 1%;
+}
+
+#picker input, #pickerTime input, #pickerDate #dia,#pickerDate #mes{
+  min-width: 34px;
+  min-height: 22px;
+}
+
+#year{/*INPUT DEL AÑO*/
+  min-width: 49px;
+  min-height: 24px;
+}
+/*PARTE2 SE COMPONE DE NUMERO DE INTEGRANDES, FECHA, HORAY LUGAR*/
+.parte2 #picker input{
+background-color: white;
+border-radius: 6px;
+font-weight: bold;
+color:gray;
+width: 12vw;
+height: 6.5vh;
+margin-right: 5%;
+}
+
+.parte2 span,.parte1 span{
+  margin-left: 3px;
+  margin-right: 5%;
+  font-weight: bold;
+  color:white;
+}
+
+.parte2 #pickerTime span{
+  margin-right: 9%;
+  font-weight: bold;
+  color:white;
+}
+
+.parte2 #pickerTime, .parte2 #pickerDate {
+  color:white;
+  font-weight: bold;
+}
+
+
+.parte2 #pickerDate input{
+  background-color: white;
+  margin-right: 1%;
+  font-weight: bold;
+  width: 18vw;
+  color:gray;
+}
+
+.parte2 #pickerTime input{
+  background-color: white;
+  margin-right: 1%;
+  font-weight: bold;
+  width: 18vw;
+  color:gray;
+}
+
+.parte2 #moreOptions {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.parte2 a{
+  color: white;  
+
+}
+.parte2 button{
+  border-radius: 5px;
+  background-color: gray;
+  font-size: 14.5px;
+  font-weight: bold;
+  color: white;
+  height: 8vh;
+  margin-top: 1%;
+  text-align: center;
+  margin-bottom: 12%;
+}
+
+.parte3{
+padding-bottom: 15%;
+padding-top: 5%;
+}

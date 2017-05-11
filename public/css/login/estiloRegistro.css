@@ -1,0 +1,34 @@
+.lbregistro{
+    font-size: 35px;
+}
+
+#registrarse{
+    align-content: center    
+}
+
+
+ #inferior{
+    color: #FFF;
+    background:#F6F6F6;
+    position:fixed; /*El div será ubicado con relación a la pantalla*/
+    left:0px; /*A la derecha deje un espacio de 0px*/
+    right:0px; /*A la izquierda deje un espacio de 0px*/
+    bottom:0px; /*Abajo deje un espacio de 0px*/
+    z-index:0;
+ }
+  
+}
+
+#formButton{
+	width: 100%;
+    border-radius: 7px;
+    color: gray;
+    background: #E6E6E6;
+}
+
+@media screen and (min-width: 400px){
+    #formulario{
+        width: 350px;
+        margin: 0px;
+    }
+}

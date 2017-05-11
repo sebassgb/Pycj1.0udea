@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Cotejo</title>
+	<link rel="stylesheet" type="text/css" href="css/login/estiloLogin.css">
+	<meta charset="utf-8">
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script> 
+            <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    
+
+</head>
+	<body>
+		<header>
+			<center><img src="src/Logo.png" alt="Logo de Cotejo"></center>
+		</header>
+		<center><form id="formulario">
+			<input type="text" id ="txtcorreo" name="usuario" placeholder="correo" required>
+			<input type="password" id ="txtcontra" name="contraseña" placeholder="Contraseña" required>
+		</form></center>
+        <center><div id="formulario">           
+			<button  type="submit" id="btnEntrar">Entrar</button>
+         </div> </center>  
+		<center><button  id ="btingresogoogle" class="ini">Iniciar sesión con Google+</button></center>
+        <center><button class="fb" id="btnfacebook">Iniciar sesión con Facebook</button></center>
+
+		<center><div id="linkDiv">
+            <a href="html/login/Registrarme.html" target="_self">
+			     <label class="links">Registrate</label>
+            </a>
+            <a href="html/login/RecuperacionContrase%C3%B1a.html" target="_self">
+                <label class="links">¿Olvidaste tu contraseña?</label>
+            </a>
+			
+		</div></center>
+	</body>
+    <!--
+<script type="text/javascript" src="js/controladorInicio.js"></script>-->
+<script src="js/login/Ingresar/ingresarFirebase.js"></script>
+<script src="js/login/Ingresar/erroresIngreso.js"></script>
+<script src="js/login/redireccionar.js"></script>
+
+
+</html>

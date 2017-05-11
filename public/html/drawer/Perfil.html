@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Menu Lateral - Dispositivos Moviles</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script> 
+	<link href="../../css/drawer/perfil.css" rel="stylesheet">
+  <link href="../../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/basicoResponsivo.css" rel="stylesheet" type="text/css"><!--Basico para barras-->
+  <link href="../../css/estiloBarras.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+
+</head>
+<body id="perfil">
+	<!--BARRA SUPERIOR-->
+  <div  id="barrasFinish">
+  <header>
+        <nav id="navCorredizo">
+             <ul>
+                <section id="Slogo"><img class ="img-responsive center-block" id="logo" src="../../src/Logo-Gris.png"></section>
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Mis Eventos</a></li>
+                <li><a href="#">Configuración de cuenta</a></li>
+                <li><a href="#">Creditos</a></li>
+                <li><a href="#">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+
+   <nav id="navDer"></nav><!--Utilizado para que el slider se pueda cerrar afuera del mismo-->
+  <div class="row" id="superior">
+     <div class="menu_bar">
+      <div id="tap" class="col-xs-3 col-sm3 col-md-3 col-lg-3 ">
+         <a href="#"><img class ="img-responsive center-block .menu_bar2" src="../../src/rayas.png"></a>
+      </div>
+      </div>
+
+      <div class="col-xs-3 col-sm3 col-md-3 col-lg-3">
+           <label for="labelUbicacion" ></label>
+      </div>
+      <div id="tap" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+           <a href="#"><img class ="img-responsive center-block" src="../../src/lupa.png"></a>
+      </div>
+
+      <div id="tap" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+           <a href="#"><img class ="img-responsive center-block" src="../../src/campana.png"></a>
+      </div>
+    </div>
+
+    </header>
+
+    <center>
+    	<div id="big">
+            <img class ="perfil fotoPerfil" src="../../src/perfil.png">
+	   </div>
+    </center>
+    	<div id="texto">
+            <p class="nombrePerfil">Nombre: </p>
+            <p class="texto generoPerfil">Genero: </p>
+            <p class="texto edadPerfil">Edad: </p>
+            <br>
+				  	<p class="texto">Deportes Favoritos</p>
+	   </div>
+		<div class="dropdown">
+ <button style="margin-bottom: 5px;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Agregar Deportes
+ <span class="caret"></span></button>
+ <ul class="dropdown-menu">
+	 <li><a onclick="return add_li(this.text)">Voleibol</a></li>
+	 <li><a onclick="return add_li(this.text)">Porrismo</a></li>
+	 <li><a onclick="return add_li(this.text)">Polo_Acuatico</a></li>
+	 <li><a onclick="return add_li(this.text)">Street_Workout</a></li>
+	 <li><a onclick="return add_li(this.text)">Ultimate</a></li>
+	 <li><a onclick="return add_li(this.text)">Ciclismo</a></li>
+	 <li><a onclick="return add_li(this.text)">Natacion</a></li>
+	 <li><a onclick="return add_li(this.text)">Judo</a></li>
+	 <li><a onclick="return add_li(this.text)">Balonmano</a></li>
+	 <li><a onclick="return add_li(this.text)">Rugby_Subacuatico</a></li>
+	 <li><a onclick="return add_li(this.text)">Taekwondo</a></li>
+	 <li><a onclick="return add_li(this.text)">Rugby_Terrestre</a></li>
+	 <li><a onclick="return add_li(this.text)">Halterofilia</a></li>
+	 <li><a onclick="return add_li(this.text)">Gimnasia</a></li>
+	 <li><a onclick="return add_li(this.text)">Baloncesto</a></li>
+	 <li><a onclick="return add_li(this.text)">Futbol_Sala</a></li>
+	 <li><a onclick="return add_li(this.text)">Clavados</a></li>
+	 <li><a onclick="return add_li(this.text)">Futbol</a></li>
+	 <li><a onclick="return add_li(this.text)">Apnea</a></li>
+	 <li><a onclick="return add_li(this.text)">Tenis_de_Mesa</a></li>
+	 <li><a onclick="return add_li(this.text)">Ajedrez</a></li>
+	 <li><a onclick="return add_li(this.text)">Tenis_de_Campo</a></li>
+	 <li><a onclick="return add_li(this.text)">Atletismo</a></li>
+	 <li><a onclick="return add_li(this.text)">Karate</a></li>
+	 <li><a onclick="return add_li(this.text)">Aikido</a></li>
+	 <li><a onclick="return add_li(this.text)">Buceo_Pulmon_Libre</a></li>
+	 <li><a onclick="return add_li(this.text)">Softbol</a></li>
+	 <li><a onclick="return add_li(this.text)">Triatlon</a></li>
+ </ul>
+</div>
+    <center><!--Aquí añadiremos los deportesl del usuario-->
+			<ul id="addSports">
+			</ul>
+    </center>
+		<center>
+			<button type="button" class="btn btn-default" onclick="guardarPerfil();">Guardar</button>
+		</center>
+
+<!--BARRA INFERIOR-->
+<footer style="margin-top:12%;">
+   <div class="row" id="inferior">
+      <div id="tap" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <a href="#"><img class ="img-responsive center-block" id="tap" src="../../src/casa.png"></a>
+      </div>
+      <div id="tap" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+       <a href="#"><img class ="img-responsive center-block" id="tap" src="../../src/mas.png"></a>
+      </div>
+      <div id="tap" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+       <a href="#"><img class ="img-responsive center-block" id="tap" src="../../src/ojo.png"></a>
+      </div>
+  </div>
+</footer>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../../js/menu.js"></script>
+		<script src="../../js/drawer/perfil/perfil.js"></script>
+</body>
+
+
+</html>

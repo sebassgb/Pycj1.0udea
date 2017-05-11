@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8"/>
+        <meta name="description" content="aplicación eventos Dep html 5"/>
+        <meta name="keywords" content="html5, css3, javascript"/>
+        <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+
+        <title>Cotejo</title>
+        <link rel="stylesheet" type="text/css" href="../../css/login/estiloLogin.css">
+        
+    </head>
+    
+    <body style="background-color: #1B8A59;">
+        <header>
+            <img src="../../src/Logo.png" alt="Logo de Cotejo">
+        </header>
+        
+        <form id="formulario"> 
+			<input type="text" placeholder=" Correo" id="email">
+			<button  onclick="enviarEmail()">Enviar Recuperación</button>
+        <div id="linkDiv">
+            <a href="../../index.html" target="_self">
+                <label class="links">Atras</label>
+            </a>
+         </div>
+		</form>  
+        <script src="../../js/login/Contrasena/cambioContrasenaFirebase.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><!--Cambiar por libreria importada-->
+    </body>
+    
+</html>

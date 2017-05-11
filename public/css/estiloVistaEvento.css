@@ -1,0 +1,180 @@
+.divInfoEvento {
+	background: #fff;
+	width: 94%;
+	height: 22vh;
+	margin: 3%;
+	padding: 4%;
+	margin-top: 25px;
+	border-style: solid;
+	border-radius: 20px;
+	border-color: #22694A;
+	border-width: 1vh;
+	font-size: 4vw;
+   	position:relative;
+	overflow: hidden;
+}
+
+.eventoInfo {
+	float: left;
+	width: 70%;
+	padding-top: 1vh;
+
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	float: left;
+}
+
+.eventoInfoDiv{
+	/*background: green;*/
+	width: 100%;
+	height: 10vh;
+}
+
+.divsInfo{/**/
+	/*background: gray;*/
+	
+	height: 3vh;
+}
+
+
+.eventoInfoEncuentro {
+	/*background: #AEAFFF;*/
+	margin-top: 1vh;
+	float: left;
+	height: 10vh;
+	width: 100%;
+}
+
+.divFecha .imgLogo{
+	float: left;
+	width: 15px;
+	height: 100%;
+
+	/*background: #666;*/
+}
+
+.divHora .imgLogo{
+	float: left;
+	width: 15px;
+	height: 100%;
+
+	/*background: #666;*/
+}
+
+.divLocalizacion .imgLogo{
+	float: left;
+	width: 12px;/*******/
+	height: 100%;
+
+	/*background: #666;*/
+}
+
+.imgLogo img{
+	width: 100%;
+	height: 100%;
+}
+
+
+.divFecha{
+	/*background: red;*/
+
+	float: left;
+	width: 60%;
+	height: 3vh;
+}
+
+
+.divHora{
+	/*background: blue;*/
+
+	float: left;
+	width: 40%;
+	height: 3vh;
+}
+
+.divLocalizacion{
+	/*background: yellow;*/
+
+	float: left;
+	margin-top: 1vh;
+	width: 100%;
+	height: 3vh;
+}
+
+.divEventoImg{
+	float: left;
+	width: 22%;
+	top: 0;
+	bottom: 0;
+	margin-left: 70%;
+	position: absolute;
+
+	/*background: #545;*/
+}
+
+.eventoImg{
+	border-style: solid;
+	border-radius: 10px;
+	border-color: #22694A;
+	border-width: 1vh;
+
+	width: 100%;
+	height: 10vh;
+	margin-top: 2vh;
+}
+
+.eventoImg img{
+	widows: 100%;
+	height: 100%;
+}
+
+.divEventoImg label{
+	margin-top: 2vh;
+	text-align: center;
+	width: 100%;
+}
+
+.enunciadoDeporteInfo, .enunciadoNombreInfo, 
+.enunciadoNombreInfo{
+	color: green;
+}
+
+@media screen and (max-height: 340px){
+	body{
+		height: 310px;
+	}
+
+	.divInfoEvento{
+		height: 80px;
+		margin-top: 30px;
+		border-width: 2px;
+	}
+
+	.eventoInfo{
+		height: 40px;
+	}
+
+	.eventoInfoEncuentro {
+		height: 35px;
+		top: 40px;
+		position: absolute;
+	}
+
+	.divsInfo, .divFecha, .divHora, .divLocalizacion{
+		height: 11px;
+		/*background: #111;*/
+	}
+
+	.eventoImg{
+		height: 40px;
+		border-width: 2px;
+	}
+}
+
+@media screen and (min-width: 400px){
+	*{
+		font-size: 13px;
+	}
+}
+

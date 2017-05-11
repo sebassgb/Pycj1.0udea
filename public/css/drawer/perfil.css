@@ -1,0 +1,58 @@
+#perfil, #addSports{
+  background: #1B8A59;
+  font-family: 'Bree Serif', serif;
+}
+
+#big{
+  padding-top: 15%;
+}
+
+#big img{
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  width: 50%;
+  height: auto;
+  margin-bottom: 3%;
+}
+
+#texto{
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.deportes img{
+  width: 10vh;
+  height: auto;
+}
+
+.dropdown-menu{
+    max-height: 75px;
+    overflow: hidden;
+    overflow-y: auto;
+    align-items: center;
+}
+.dropdown{
+  margin-left:42%;
+}
+
+@media (max-width:360px){
+.dropdown{
+  margin-left:28%;
+}
+}
+
+a.dropdown-toggle {
+    position: relative;
+}
+
+.open > a.dropdown-toggle::before,
+.open > a.dropdown-toggle::after {
+    display: block;
+}
+
+#addSports img{
+  width: 30%;
+  height: auto;
+}

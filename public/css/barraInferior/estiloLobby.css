@@ -1,0 +1,187 @@
+/*Eliminar margenes y paddings que agrega el navegador pro dfecto*/
+* {
+    padding: 0;
+    margin: 0;
+
+}
+
+body{
+    background: #1B8A59;
+    font-family: 'Bree Serif', serif;
+  }
+
+.lbregistro{
+    font-size: 35px;
+}
+
+#registrarse{
+    align-content: center
+}
+
+ #inferior{
+color: #FFF;
+background: rgb(255,255,255);
+position:fixed; /*El div será ubicado con relación a la pantalla*/
+left:0px; /*A la derecha deje un espacio de 0px*/
+right:0px; /*A la izquierda deje un espacio de 0px*/
+bottom:0px; /*Abajo deje un espacio de 0px*/
+z-index: 0;
+}
+
+.wrapper{/*Enciera contenido del menu fijo*/
+    width: 100%;
+    overflow: hidden;
+}
+
+header{/*Contenedor de la lista con iconos*/
+    background: rgb(255,255,255);
+    width: 100%;/*Para que use todo el ancho de la pantalla*/
+    position: fixed;/*Para que se quede fijo*/
+    z-index: 10;/*Para que esté encima de todos los elementos*/
+}
+
+
+nav {
+    float: left;/*Desplazamos el nav hacía la izq*/
+}
+
+nav ul{
+    list-style: none;
+    overflow: hidden; /*Limpiar errores del float*/
+}
+
+nav ul li {
+    float:left;
+    font-family: Arial, sans-serif;
+    font-size: 5vw;
+    }
+
+nav ul li a{
+    white-space: nowrap;
+    display: block;/* Convertimos los elementos a en elementos bloque para manipular el padding */
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+    margin-left: 6vh;
+    color: #1B8A59;
+    width:10vw;
+    height: 50px;
+    text-decoration: none;
+}
+
+ div img{
+    height: 65vh;
+    width: 45px;
+  }
+
+
+body {
+    background: #1B8A59;
+}
+
+header {
+	width:100%;
+}
+
+header nav {
+	width:90%;
+	margin:20px auto;
+	max-width:1000px;
+	background:#666666;
+    position: fixed;
+    z-index: 100;
+}
+
+ #navDer{
+	width:15vw;
+	margin: 1px auto;
+	background:#999999;
+    z-index: 100;
+    margin-left: 85vw;
+    background: rgba(53,53,53,0)
+}
+
+.menu_bar {
+	display:inline-block;
+}
+
+header nav ul {
+	list-style:none;
+	overflow:hidden;
+}
+
+header nav ul li {
+	float: right;
+}
+
+header nav ul li span {
+	margin-right:10px;
+}
+
+header nav ul li a{
+	display:block;
+	padding:20px;
+	color:#fff;
+	text-decoration:none;
+}
+
+header nav ul li:hover {
+    background: #B3DF5A;
+}
+
+#tap:active {/*Cambiar de color el boton al darle click*/
+	background:#FFFFFF;
+}
+
+section {
+	padding:20px;
+}
+
+@media screen and (max-width:800px) {
+	header nav {
+		width:85%;
+		height:100%;
+		margin:0;
+		position: fixed;
+		right:100%;
+		/*top:0px;*/
+		overflow:auto;
+	}
+
+	.menu_bar {
+		display:block;
+		width:100%;
+		background:#ccc;
+	}
+
+	.menu_bar .bt-menu {
+		display:block;
+		padding:20px;
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+    background: #1B8A59;
+		overflow: hidden;
+		font-size:25px;
+		font-weight:bold;
+		color:#fff;
+		text-decoration:none;
+	}
+
+	.menu_bar span {
+		float:right;
+		font-size:40px;
+	}
+
+	header nav ul li {
+		display:block;
+		float:none;
+		border-bottom:1px solid rgba(255,255,255,.3);
+	}
+
+    #logo{
+        padding-top: 4vh;
+        height: 25vh;
+        width: auto;
+
+    }
+}

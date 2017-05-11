@@ -1,0 +1,111 @@
+body{
+	background: #1B8A59;
+}
+
+header {	
+	text-align: center;
+	margin-bottom: 1vh;
+	margin-top: 1vh;
+	/*background: #666;*/
+}
+
+header img {
+	width: 80%;
+	height: auto;
+}
+
+#formulario {	
+	width: 70%;
+
+
+	/*background: #688;*/
+}
+
+#formulario input{
+	width: 100%;
+	margin-bottom: 2vh;
+	border-radius: 7px;
+}
+
+#formulario button{
+	width: 100%;
+	border-radius: 7px;
+	color: gray;
+	background: #E6E6E6;
+	font-weight: bold;
+}
+
+.ini{
+	margin-top: 6vh;
+	margin-bottom: 2vh;
+	width: 70%;
+	border-radius: 7px;
+	background-color: #DD4B39;
+	border-color: #DD4B39;
+	color: #fff;
+	padding: 0.25%;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+#linkDiv{
+	
+	margin-top: 3vh;
+}
+
+.links {
+	color: #fff;
+	text-decoration: underline;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	margin-bottom: 1vh;
+}
+
+#btnfacebook{	
+	width: 70%;
+	max-width:320px; 
+	border-radius: 7px;
+	padding: 0.25%;
+	background-color: #3b5998;
+	border-color: #3b5998;
+	color: #fff;
+	font-weight: bold;
+	font-size: 12px;
+
+}
+	
+@media screen and (min-width: 400px){
+	header img{
+		width: 320px;
+		height: auto;
+	}
+
+	#formulario, .ini, #linkDiv{
+		width: 320px;
+	}
+}
+
+@media screen and (max-height: 410px){
+	.ini{
+		margin-top: 10px;
+	}
+
+	#formulario{
+		height: 80px;
+	}
+
+	#formulario input{
+		margin-bottom: 7px;
+	}
+}
+
+@media screen and (min-height: 510px){
+	#formulario{
+		height: 120px;
+	}
+
+	#formulario input{
+		margin-bottom: 9px;
+	}
+}

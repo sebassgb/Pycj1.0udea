@@ -1,0 +1,79 @@
+
+
+h1{
+  font-size: 20px;
+  margin-top: 1px;
+  margin-bottom: 5%;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+h2{ 
+  margin-bottom: 3%;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 5%;
+  color: white;
+}
+
+
+body{
+  background-color:#46B279;
+}
+
+.parte1{
+  background-color: #1B8A59;
+  margin-left: 8%;
+  margin-right: 8%;
+  font-weight: bold;
+  color: white;
+}
+
+.parte1 button{
+  font-weight: bold;
+}
+
+.parte1 span{
+  font-size: 15px;
+  margin-right: 5%;
+  font-weight: bold;
+  color: white;
+  margin-left: 5%;
+}
+
+.parte1 #pickerAge input{
+  width: 13vw;
+  margin-right: 3%;
+  font-weight: bold;
+  color: gray;
+  height: 28px;
+  min-width: 43px;
+}
+
+#notas{
+  margin-left:5%;
+  margin-right: 5%;
+  width: 75vw;
+  height: 30vh;
+  border-style: solid;
+  border-color: gray;
+  background-color: white;
+  margin-bottom: 2%;
+}
+
+#notas #editeNota{
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  border-style: none;
+  color: gray;
+}
+
+#opTitulo{/*Nos conteine el H1 del TITULO*/
+  height: 15vh;
+  padding-top: 35px;
+  margin-bottom: 2%;
+}
+

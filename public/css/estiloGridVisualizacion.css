@@ -1,0 +1,22 @@
+.marcoGlobal{
+    background: #fff;
+    position: relative; 
+    margin: auto;
+    width: 90%;
+    height: 90%;
+    clear: both;
+}
+
+.filas{
+    
+    position: center; 
+    margin:auto;
+    width: 95%;
+    height: 90%;
+    clear: both;
+}
+
+#centrarImg{
+    width: 100px;
+    margin: 0;
+}

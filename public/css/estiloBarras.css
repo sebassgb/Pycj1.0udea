@@ -1,0 +1,191 @@
+/*Eliminar margenes y paddings que agrega el navegador pro dfecto*/
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  font-family: 'Bree Serif', serif;
+  }
+
+#registrarse{
+  align-content: center
+}
+
+ #inferior{
+  height: 8vh;
+  color: #FFF;
+  background: rgb(255,255,255);
+  position:fixed; /*El div será ubicado con relación a la pantalla*/
+  left:0px; /*A la derecha deje un espacio de 0px*/
+  right:0px; /*A la izquierda deje un espacio de 0px*/
+  bottom:0px; /*Abajo deje un espacio de 0px*/
+  z-index: 0;
+  max-height: 35px;  
+}
+
+.wrapper{/*Enciera contenido del menu fijo*/
+  width: 100%;
+  overflow: hidden;
+}
+
+header{/*Contenedor de la lista con iconos*/
+  background: rgb(255,255,255);
+  width: 100%;/*Para que use todo el ancho de la pantalla*/
+  position: fixed;/*Para que se quede fijo*/
+  z-index: 10;/*Para que esté encima de todos los elementos*/
+  height: 8vh;
+  max-height: 35px;
+}
+
+
+nav {
+  float: left;/*Desplazamos el nav hacía la izq*/
+}
+
+nav ul{
+  list-style: none;
+  overflow: hidden; /*Limpiar errores del float*/
+}
+
+nav ul li {
+  float:left;
+  font-family: Arial, sans-serif;
+}
+
+nav ul li a{
+  white-space: nowrap;
+  display: block;/* Convertimos los elementos a en elementos bloque para manipular el padding */
+  margin-bottom: 1vh;
+  margin-top: 1vh;
+  margin-left: 6vh;
+  color: #1B8A59;
+  width:10vw;
+  height: 50px;
+  text-decoration: none;
+}
+
+#inferior img, header div img{/*Para que el menu superior e inferior no modifiquen sus alturas*/
+  height: auto;
+  width: 28px;
+  }
+
+header nav {
+	width:90%;
+	margin:20px auto;
+	max-width:1000px;
+	background:#666666;
+  position: fixed;
+  z-index: 100;
+}
+
+ #navDer{/*Lo usamos para ocultar elslider dandole click por fuera*/
+	width:15vw;
+	margin: 1px auto;
+	background:#999999;
+  z-index: 100;
+  margin-left: 85vw;
+  background: rgba(53,53,53,0);
+}
+
+.menu_bar {
+	display:inline-block;
+}
+
+header nav ul {
+	list-style:none;
+	overflow:hidden;
+}
+
+header nav ul li {
+	float: right;
+}
+
+header nav ul li span {
+	margin-right:10px;
+}
+
+header nav ul li a{
+	display:block;
+	padding:20px;
+	color:#fff;
+	text-decoration:none;
+}
+
+
+section {
+	padding:10px;
+}
+
+@media screen and (max-width:10000000px) {/*Lo usamos para esconder el slider apartir de 1000px*/
+	header nav {
+		width:85%;
+		height:100%;
+		margin:0;
+		position: fixed;
+		right:100%;
+		overflow:auto;
+	}
+
+	.menu_bar {
+		display:block;
+		width:100%;
+		background:#ccc;
+	}
+
+	.menu_bar .bt-menu {
+		display:block;
+		padding:20px;
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+    background: #1B8A59;
+		overflow: hidden;
+		font-weight:bold;
+		color:#fff;
+		text-decoration:none;
+	}
+
+	.menu_bar span {
+		float:right;
+	}
+
+	header nav ul li {
+		display:block;
+		float:none;
+		border-bottom:1px solid rgba(255,255,255,.3);
+	}
+
+  #logo{
+    padding-top: 4vh;
+    height: 25vh;
+    width: auto;
+    }
+
+  #tap:active{
+    background-color: #666;
+  }
+}
+
+@media screen and (min-width: 450px){
+  #navCorredizo{
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 250px){
+  #navCorredizo{
+    width: 200px;
+    left: -200px;
+  }
+
+  #inferior, #superior{
+    width: 250px;
+  }
+}
+
+@media screen and (max-height: 410px){
+  #logo{
+    height: 110px;
+  }
+}

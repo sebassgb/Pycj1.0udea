@@ -1,0 +1,22 @@
+body {
+  font-family: 'Indie Flower', cursive;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ppalContainer .row{
+  margin: 1px;
+  margin-bottom: 5px;
+}
+
+.ppalContainer{
+  padding-top: 10%;
+}
+
+@media screen and (max-width:306px){
+ body{
+    font-size: 88%;
+    margin-right: 5%;
+  }
+}
+
