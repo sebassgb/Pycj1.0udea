@@ -11,6 +11,8 @@
 	<link href="../../../css/basicoResponsivo.css" rel="stylesheet" type="text/css" ><!--Basico para barras-->
 	<link href="../../../css/estiloBarras.css" rel="stylesheet">
 	<link href="../../../css/barraInferior/masOpciones.css" rel="stylesheet">
+	<script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script> 
+
 </head>
 <body>
 	<!--BARRA SUPERIOR-->
@@ -53,10 +55,10 @@
 
 		<div class="parte1">
 			<div >
-			<span>Nombre</span><input type="text" name="nombreEvento" placeholder="Nombre del evento" required>
+			<span>Nombre</span><input type="text"  id ="nomEvento" name="nombreEvento" placeholder="Nombre del evento" required>
 		  </div>
 			<div>
-				<span>Evento </span><input type="text" name="deporteEvento" placeholder="Deporte del evento" required>
+				<span>Evento </span><input type="text" id ="deporEvento" name="deporteEvento" placeholder="Deporte del evento" required>
 			</div>
 
 			<!--Para cristian-->
@@ -124,17 +126,17 @@
 	<div>
 		<span>Género </span>
     <div class="btn-group btn-group-sm">
-  <button type="button" class="btn btn-primary">M</button>
-  <button type="button" class="btn btn-primary">F</button>
-  <button type="button" class="btn btn-primary">Mixto</button>
+  <button type="button" class="btn btn-primary" onclick="genero('M')">M</button>
+  <button type="button" class="btn btn-primary" onclick="genero('F')">F</button>
+  <button type="button" class="btn btn-primary" onclick="genero('Mixto')">Mixto</button>
 </div>
 
   <h2>Rango de edades</h2>
   <div>
     		<div id="pickerAge"><!--Numero de personas-->
     			<span>Entre</span>
-          <input type="number" min="5" max="99" placeholder="0" required>y
-          <input type="number" min="6" max="99" placeholder="0" required>
+          <input id ="edadMin" type="number" min="5" max="99" placeholder="0" required>y
+          <input id ="edadMax" type="number" min="6" max="99" placeholder="0" required>
     		</div>
   </div>
 	</div>
@@ -177,7 +179,11 @@
 	<script type="text/javascript" src="../../../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../../../js/fastclick.js"></script>
 	<script type="text/javascript" src="../../../js/menu.js"></script>
-	<script type="text/javascript" src="../../../js/crearEvento/crearEvento.js"></script>
-	<script type="text/javascript" src="../../../js/crearEvento/masOpciones.js"></script>
+	<script type="text/javascript" src="../../../js/evento/LeerDatosEvento.js"></script>
+	<script type="text/javascript" src="../../../js/evento/crearEvento.js"></script>
+		
+
+
+
 </body>
 </html>
