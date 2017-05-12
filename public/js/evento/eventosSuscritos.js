@@ -1,3 +1,4 @@
+
 // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAS7jZPxJGfMUz_HWPyOWHabLwLNcY8nqE",
@@ -8,34 +9,30 @@
   };
 
 firebase.initializeApp(config);  // objeto para aceder a la bd
+
 var database = firebase.database(); // objeto para hacer uso de la bd
 
-var btn = document.getElementById("btnprueba");
-var deportee="futbol";
 
-
-// funcion del deporte
-
-function retornarEventos(nameDeporte){
-
-	var todosLosEventosDelDeporte=[];
-
-	var bdEventos=database.ref("Eventos/"+nameDeporte); // referencia a la base de datos
-
-	var arrayEventosDeporte={}; // vector donde alamacenamos todos los evetos del deporte x 
+function retornarEventosSuscrito(correo) {
+	var pkMisEventos=[];
+	var misEventos=[];
+	var pkusuario=quitarPuntoCorreo(correo);	
+	var referenciaEventossuscritos=database.ref("usuarios/"+pkusuario+"/eventosAsistencia");
+	var arrayEventosPorDeporte=[];
 
 // 3. activamos la referencia a la base de datos para trabajar con ella, con 2 funciones , una que se ejecuta consatantemente si todo fluye correctamente entre la referencia y firebase y otra que se ejecuta en caso de presentarse errores con fire base, el parametro "value" mantiene en constante comunicacion la la bd de fire
-    bdEventos.on('value',function(datos){
+    referenciaEventossuscritos.on('child_added',function(datos){
         //la primera funcion recorremos la lista de usuarios
-        
-        arrayEventosDeporte=datos.val();// obtenemos los valores raices del nodo usuarios
+        arrayEventosPorDeporte=datos.val();// obtenemos los valores raices del nodo usuarios
         // funcion de jquery que sirve para recorrer vectores es lo mismo que un for o while
         // recibe dos paramentros el array y la funcion a ejecutar con el array
+
         var i=0;
-        $.each(arrayEventosDeporte,function(indice,valor)
+        $.each(arrayEventosPorDeporte,function(indice,valor)
         {
-            var valores=valor.informacion;
-            todosLosEventosDelDeporte[i]=valor.informacion;   
+        	var valores=valor.pkEvento;
+        	pkMisEventos[i]=valores; // ingreso todas las pk de los eventos en el vector mis eventos para luego ir por ellos
+
             i++;
         });
         // funciona de error
@@ -43,18 +40,19 @@ function retornarEventos(nameDeporte){
         //alert("error en la lectura "+objetoError.code);
         
     });
-    //console.log(todosLosEventosDelDeporte);
-    return todosLosEventosDelDeporte;
+
+    // luego de tener la pk debo de ir a la base de datos eventos y trar los respectivos JSON de la pk Eventos
+
+    for(var i=0;i<pkMisEventos.length;i++){
+    	var jsonEvento=database.ref(pkMisEventos[]);
+    	misEventos
+    }
+
+
+
+    return misEventos;
+
 }
-
-
-
-
-
-
-
-
-
 
 
 

@@ -36,7 +36,7 @@ formButton.addEventListener('click', e => {
  // capturamos los datos del formulario para registrar el usuario        
 
      unombre = document.getElementById("txtnombre").value;
-     ucorreo= document.getElementById("txtcorreo").value;
+     ucorreo= document.getElementById("txtcorreo").value.toString();
 
      selectgenero=document.getElementById("slgenero");
      pos= selectgenero.selectedIndex;
@@ -57,43 +57,8 @@ formButton.addEventListener('click', e => {
         
   }); 
 
-
-
-
-
-
-/*function crearvectorusuarios(){
-       // 1.creamos la referencia a la base de datos
-    var referenciausr=database.ref("usuarios");
-    // 2. creamos arreglo de usuarios para recorrer
-    var arrayusuarios={};
-    // 3. activamos la referencia a la base de datos para trabajar con ella, con 2 funciones , una que se ejecuta consatantemente si todo fluye correctamente entre la referencia y firebase y otra que se ejecuta en caso de presentarse errores con fire base, el parametro "value" mantiene en constante comunicacion la la bd de fire
-    referenciausr.on('value',function(datos){
-    //la primera funcion recorremos la lista de usuarios
     
-    arrayusuarios=datos.val();// obtenemos los valores raices del nodo usuarios
-    // funcion de jquery que sirve para recorrer vectores es lo mismo que un for o while
-    // recibe dos paramentros el array y la funcion a ejecutar con el array
-    
-    $.each(arrayusuarios,function(indice,valor)
-    {
-        usuariosregistrados[indice]=valor;    
-      
-        
-    });
-
-    // funciona de error
-    },function(objetoError){
-        //alert("error en la lectura "+objetoError.code);
-        
-    });
-
-    //return respuesta;
-}    */
-
-
-    
-function crearusuario(unombre,ucorreo,ugenero,uedad){
+function crearusuario(){
 
 
 
@@ -103,7 +68,12 @@ function crearusuario(unombre,ucorreo,ugenero,uedad){
             correo : ucorreo,
             genero: ugenero,
             edad : uedad,
-            pass: upass                     
+            pass: upass,
+            foto:"",
+            eventosCreados:"futbol",
+            eventosAsistencia:"futbol",
+            deportesFavoritos:"iii"
+
      }
         
      // creamos el usuario en la parte de Authentication para poder manejar facilmente los logeos y el restablecimiento de contraseña.
@@ -115,7 +85,7 @@ function crearusuario(unombre,ucorreo,ugenero,uedad){
     promise.then(function(snapshot){
         var sinpunto=quitarPuntoCorreo(ucorreo);
         database.ref("usuarios/"+sinpunto).update(usr);
-        location.href="../index.html"; // lo redireccionamos a la parte de ingresar para que ingrese a la aplicacion
+        //location.href="../index.html"; // lo redireccionamos a la parte de ingresar para que ingrese a la aplicacion
     });
         
 // en caso de ERROR se informa cual es el error
@@ -212,7 +182,7 @@ function validarcamposformulario(){
 
 
 
-// falta cuadrar esta chimbita bien falta ffffffff********************
+
 
 
 
