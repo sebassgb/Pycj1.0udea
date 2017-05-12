@@ -166,7 +166,8 @@ function mainLobby(){
 function mainDeporte(xdeporte){
 	var eventosIniciales = retornarEventos(xdeporte);
 	setTimeout(function (){
-		addListaEventoAlFinal(eventosIniciales);
+		var arrEventoOrdenado = ordenarEventoFecha(eventosIniciales);
+		addListaEventoAlFinal(arrEventoOrdenado);
 	}, 2500);
 }
 
