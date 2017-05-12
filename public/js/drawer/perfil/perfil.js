@@ -103,3 +103,17 @@ function llenarInfoCompleta(xJson, elemento){
 function guardarPerfil(){//Retornamos el vector con los deportes favoritos
   return listaFavoritos;
 }
+
+
+
+
+var userId = firebase.auth().currentUser.uid;
+return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+var username = snapshot.val().username;
+    console.log(username);
+  // ...
+});
+
+
+//var PK = json.creador+" "+json.dia+" "+json.mes+" "+json.year+" "+json.hora+" "+json.minuto;
+//return PK;
