@@ -4,3 +4,4 @@ function nombreDeporte(x){
 	window.location="../../barraInferior/lobby/lobby.html";
 }
 // jose toco el ojo
+//ajskhdfkhaskdfhsad
