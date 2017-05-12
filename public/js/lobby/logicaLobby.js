@@ -130,12 +130,12 @@ function copyJSON(x){
 
 var funcionCerrarEvento = function(){
 	var referencia = document.getElementById("divVistaEventoNoRelacionado");
-	if(referencia != "undefined"){
+	if(referencia != "undefined" && referencia != null){
 		divLobby.removeChild(referencia);
-		document.getElementById("divCierreTop").style.background = "none";
-		document.getElementById("divCierreBottom").style.background = "none";
-		document.getElementById("divCierreLeft").style.background = "none";
-		document.getElementById("divCierreRigth").style.background = "none";
+		document.getElementById("divCierreTop").style.display = "none";
+		document.getElementById("divCierreBottom").style.display = "none";
+		document.getElementById("divCierreLeft").style.display = "none";
+		document.getElementById("divCierreRigth").style.display = "none";
 	}
 }
 
@@ -146,18 +146,39 @@ document.getElementById("divCierreRigth").onclick = funcionCerrarEvento;
 
 
 function activarSeccionesInvisibles(){
+	document.getElementById("divCierreTop").style.display = "inline";
+	document.getElementById("divCierreBottom").style.display = "inline";
+	document.getElementById("divCierreLeft").style.display = "inline";
+	document.getElementById("divCierreRigth").style.display = "inline";
 	document.getElementById("divCierreTop").style.background = "gray";
 	document.getElementById("divCierreBottom").style.background = "gray";
 	document.getElementById("divCierreLeft").style.background = "gray";
 	document.getElementById("divCierreRigth").style.background = "gray";
 }
 
-var eventosIniciales = retornarEventos("futbol");
 
 
-setTimeout(function (){
-	addListaEventoAlFinal(eventosIniciales);
-}, 2500);
+
+function mainLobby(){
+
+}
+
+function mainDeporte(xdeporte){
+	var eventosIniciales = retornarEventos(xdeporte);
+	setTimeout(function (){
+		addListaEventoAlFinal(eventosIniciales);
+	}, 2500);
+}
+
+function mainMisEventos(){
+
+}
+
+mainDeporte("futbol");
+
+
+
+
 
 
 
