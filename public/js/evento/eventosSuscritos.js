@@ -1,14 +1,4 @@
 
-// Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAS7jZPxJGfMUz_HWPyOWHabLwLNcY8nqE",
-    authDomain: "cotejo-4e99d.firebaseapp.com",
-    databaseURL: "https://cotejo-4e99d.firebaseio.com",
-    storageBucket: "cotejo-4e99d.appspot.com",
-    messagingSenderId: "921281214360"
-  };
-
-firebase.initializeApp(config);  // objeto para aceder a la bd
 
 var database = firebase.database(); // objeto para hacer uso de la bd
 
@@ -41,14 +31,14 @@ function retornarEventosSuscrito(correo) {
         
     });
 
-    // luego de tener la pk debo de ir a la base de datos eventos y trar los respectivos JSON de la pk Eventos
+    // luego de tener la pk debo de ir a la base de datos eventos y traer los respectivos JSON de la pk Eventos
 
     for(var i=0;i<pkMisEventos.length;i++){
-    	var jsonEvento=database.ref(pkMisEventos[]);
-    	misEventos
+    	var jsonEvento=database.ref(pkMisEventos[i]);
+    	misEventos[i]=jsonEvento;
     }
 
-
+    console.log(misEventos);
 
     return misEventos;
 
