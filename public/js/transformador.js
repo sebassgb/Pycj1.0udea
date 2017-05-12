@@ -48,3 +48,8 @@ function ordenarEventoFecha(eventos){
 	return res;
 }
 
+function JsonToPkEvento(json){ 
+    var PK = json.creador+" "+json.dia+" "+json.mes+" "+json.year+" "+json.hora+" "+json.minuto;
+    return PK;
+}
+

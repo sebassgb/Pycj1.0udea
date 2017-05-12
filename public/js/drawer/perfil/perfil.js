@@ -115,5 +115,4 @@ var username = snapshot.val().username;
 });
 
 
-//var PK = json.creador+" "+json.dia+" "+json.mes+" "+json.year+" "+json.hora+" "+json.minuto;
-//return PK;
+
