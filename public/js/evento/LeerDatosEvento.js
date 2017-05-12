@@ -1,6 +1,6 @@
 // con este script leemos los datos del evento,para luego crearlo 
 
-
+// jose toco leerdatos
 var nomEvento;
 var deporEvento;
 var numPersonas;
