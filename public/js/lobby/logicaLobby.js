@@ -1,6 +1,7 @@
 //Comentario
 //Hola
 //new
+//new2
 var json = {//Formato del Json Evento, para hacer pruebas
 	"creador":"pkUsuario",
     "nombre": "nomEvento",
