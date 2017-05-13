@@ -1,15 +1,24 @@
+<<<<<<< HEAD
 var config = {
+=======
+// Initialize Firebase
+  var config = {
+>>>>>>> c4a6f333d16f162371d37c11f5b121d21e244c61
     apiKey: "AIzaSyAS7jZPxJGfMUz_HWPyOWHabLwLNcY8nqE",
     authDomain: "cotejo-4e99d.firebaseapp.com",
     databaseURL: "https://cotejo-4e99d.firebaseio.com",
     storageBucket: "cotejo-4e99d.appspot.com",
     messagingSenderId: "921281214360"
   };
+<<<<<<< HEAD
 
  firebase.initializeApp(config);  // objeto para aceder a la bd
 
 
+=======
+>>>>>>> c4a6f333d16f162371d37c11f5b121d21e244c61
 
+firebase.initializeApp(config);  // objeto para aceder a la bd
 var database = firebase.database(); // objeto para hacer uso de la bd
 var auth=firebase.auth();
 var ucorreo;
