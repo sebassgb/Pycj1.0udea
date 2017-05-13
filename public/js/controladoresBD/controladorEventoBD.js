@@ -23,21 +23,10 @@ function suscribirUsuarioEvento(pkUsuario, evento){
 	});
 }
 
+//Actualiza la bd en la referencia = "refStr" con
+//la informacion = "json"(solo actualiza, no borra lo que no este en el json)
 function updateReferencia(refStr, json){
 	var referencia = database.ref(refStr);
-	referencia.update(json);
-}
-
-
-function usarJsonReferencia(refStr, callback){
-	var referencia = database.ref(refStr);
-	referencia.on('value', function(snapshot) {
-		callback(0, snapshot.val());
-
-}
-
-function updateReferencia(refStr, json){//Actualiza la bd en la referencia = "refStr" con
-	var referencia = database.ref(refStr);//la informacion = "json"(solo actualiza, no borra lo que no este en el json)
 	referencia.update(json);
 }
 
@@ -51,19 +40,6 @@ function usarJsonReferencia(refStr, callback){
 		callback(0, snapshot.val());//Se ejecuta callback para usar la referencia cuando se tenga
 	});
 }
-
-
-function retornarUsuarioConcurrente(){
-	var user = firebase.auth().currentUser;
-	if (user) {
-		var correo=user.email;
-		correo =quitarPuntoCorreo(correo);
-		return correo;
-	} else {
-	  return null;
-	}
-}
-
 
 var eventoz = retornarJsonReferencia('Eventos/futbol/ninja@ni com 11 05 2017 1 35/informacion/participante');
 alert(eventoz);
