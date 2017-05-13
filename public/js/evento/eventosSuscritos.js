@@ -42,10 +42,20 @@ function retornarEventosSuscrito(correo) {
        });
 
     }
-    console.log(misEventos);
+
     return misEventos;
 
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
