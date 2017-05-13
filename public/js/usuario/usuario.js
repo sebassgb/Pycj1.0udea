@@ -19,35 +19,17 @@ firebase.initializeApp(config);  // objeto para aceder a la bd
 
 var database = firebase.database(); // objeto para hacer uso de la bd
 
-// metodo que retorna la pk del usuario conectado que en este caso es el correo pero sin punto
 
-function retornarUsuarioConcurrente () { 
-	var pkUsuario;
-	 firebase.auth().onAuthStateChanged(function(user) {
-	    if (user) {
-	    pkUsuario =user.email;
-	    pkUsuario=quitarPuntoCorreo(pkUsuario); 
-
-	    } else {
-	    	alert("no hay seccion activa");	      
-	    }
-	  });
-	 return pkUsuario;
- } 
-
-
-
-
-
-function perfil(correo) {
-
-
-
-
+function retornarUsuarioConcurrente(){
+	var user = firebase.auth().currentUser;
+	if (user) {
+		var correo=user.email;
+		correo =quitarPuntoCorreo(correo);
+		return correo;
+	} else {
+	  return null;
+	}
 }
-
-
-
 
 
 

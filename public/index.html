@@ -9,8 +9,6 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 
-
-
     <script type="text/javascript" src="js/usuario/usuario.js"></script>
 <script type="text/javascript" scr="js/evento/eventosSuscritos.js"></script>
 
@@ -39,33 +37,7 @@
                 <label class="links">¿Olvidaste tu contraseña?</label>
             </a>
 			
-		</div></center>
-
-		<script type="text/javascript">
-		function ppp() {
-				var pkusr=retornarUsuarioConcurrente();
-				console.log(pkusr);	
-
-		var pkUsuario;
-	 	firebase.auth().onAuthStateChanged(function(user) {
-	    if (user) {
-	    pkUsuario =user.email;
-
-	    pkUsuario=quitarPuntoCorreo(pkUsuario); 
-	    console.log(pkUsuario);
-	    } else {
-	    	alert("no hay seccion activa");	      
-	    }
-	  });
-
-
-
-		}	
-
-		</script>
-
-		<button onclick="ppp()">ffdgfdggsfd</button>
-
+		</div></center>	
 	</body>
     <!--
 <script type="text/javascript" src="js/controladorInicio.js"></script>-->

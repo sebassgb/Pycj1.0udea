@@ -16,6 +16,19 @@ function retornarJsonReferencia(refStr){
 	});
 }
 
+
+function retornarUsuarioConcurrente(){
+	var user = firebase.auth().currentUser;
+	if (user) {
+		var correo=user.email;
+		correo =quitarPuntoCorreo(correo);
+		return correo;
+	} else {
+	  return null;
+	}
+}
+
+
 var eventoz = retornarJsonReferencia('Eventos/futbol/ninja@ni com 11 05 2017 1 35/informacion/participante');
 alert(eventoz);
 //alert(JsonToPkEvento(evento));
