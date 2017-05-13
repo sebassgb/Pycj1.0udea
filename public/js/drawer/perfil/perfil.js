@@ -1,16 +1,26 @@
-/* Funcion que añade un <li> dentro del <ul>
-http://www.lawebdelprogramador.com/codigo/JavaScript/2680-Agregar-y-eliminar-elementos-li-de-una-lista-ul-con-javascript.html
-*/
-var user = firebase.auth().currentUser;//obtenemos usuario logueado actualmente
-var listaFavoritos=[];
+
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAS7jZPxJGfMUz_HWPyOWHabLwLNcY8nqE",
+    authDomain: "cotejo-4e99d.firebaseapp.com",
+    databaseURL: "https://cotejo-4e99d.firebaseio.com",
+    storageBucket: "cotejo-4e99d.appspot.com",
+    messagingSenderId: "921281214360"
+  };
+
+firebase.initializeApp(config);  // objeto para aceder a la bd
+var database = firebase.database(); // objeto para hacer uso de la bd
+llenarInfo();//Carga datos iniciales
+ var username;
+ var genero; 
+ var edad; 
+
+var listaFavoritos=["vacio","vacio","vacio","vacio","vacio"];
+var listaFavsDefinitiva=[];//Vector que se manda como parametro
 var control=0;//Control que limita numero de deportes escogidos
 var controlDeporte=true, controlRepetido=true;//Auxuliares para repetidos
 var nuevoLi;
 var posicionRepetido;//Almacena posición del vector del elemento repetido
-
-if (user != null) {//Obtenemos usuario actualmente logueado
-  
-}
 
 function add_li(texto)//Recuperamos el texto del elemento a
 {
@@ -42,7 +52,6 @@ function add_li(texto)//Recuperamos el texto del elemento a
        }
           }
         }
-        //if(control>1){control=control-1;}//controlamos que no vaya a quedar negativa
     }
    return false;
 }
@@ -91,28 +100,50 @@ function eliminar(elemento)//Disminuimos el numero de deportes
    node.parentNode.removeChild(node);
 }
 
-
-
-function llenarInfoCompleta(xJson, elemento){
-  elemento.getElementsByClassName("nombrePerfil")[0].innerHTML = xJson.nombre;
-  elemento.getElementsByClassName("generoPerfil")[0].innerHTML = xJson.genero;
-  elemento.getElementsByClassName("edadPerfil")[0].innerHTML = xJson.edad;  
-  return elemento;
+function llenarInfo(){
+  //var identificador = retornarUsuarioConcurrente();//Me retorna el usuario actual
+  var referencia = "usuarios/"+retornarUsuarioConcurrente();
+  var bdEventos=database.ref(referencia);
+  bdEventos.on('value',function(datos){
+        //la primera funcion recorremos la lista de usuarios  
+        var datos =  datos.val();// obtenemos los valores raices del nodo usuarios      
+     document.getElementsByClassName("nombrePerfil")[0].innerHTML = datos.nombre;
+     document.getElementsByClassName("generoPerfil")[0].innerHTML = datos.genero;
+     document.getElementsByClassName("edadPerfil")[0].innerHTML = datos.edad      
+    },function(objetoError){
+        //alert("error en la lectura "+objetoError.code);        
+    }); 
 }
 
 function guardarPerfil(){//Retornamos el vector con los deportes favoritos
-  return listaFavoritos;
+    
+    var favoritos= {//JSON que contiene deprotes favoritos del usuario           
+      deportesFavoritos:{
+        deporte1: listaFavoritos[0],
+        deporte2: listaFavoritos[1],
+        deporte3: listaFavoritos[2],
+        deporte4: listaFavoritos[3],
+        deporte5: listaFavoritos[4]
+      } //cuando se crea un evento el unico participante en el momento es el creador de este
+   }
 }
 
+ function retornarDeportesFavoritos(){//Retorna un vector con los deportes favoritos
+ var referencia = "usuarios/"+retornarUsuarioConcurrente()+"/"+"deportesFavoritos";
+  var bdEventos=database.ref(referencia);
+  bdEventos.on('value',function(datos){
+        //la primera funcion recorremos la lista de usuarios  
+        var datos =  datos.val();// obtenemos los valores raices del nodo usuarios
 
-
-
-var userId = firebase.auth().currentUser.uid;
-return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-var username = snapshot.val().username;
-    console.log(username);
-  // ...
-});
-
-
-
+        $.each(datos,function(indice,valor)//Recorremos todos los datos que tenemos
+        {
+            var valores=valor;
+            if(valores!=="vacio"){//Si no esta vacío se lo mandamos al vector
+              listaFavsDefinitiva.push(valor);
+            }             
+        });  
+    },function(objetoError){
+        //alert("error en la lectura "+objetoError.code);        
+    }); 
+  return listaFavsDefinitiva;
+ }
