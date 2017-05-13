@@ -6,10 +6,8 @@
     storageBucket: "cotejo-4e99d.appspot.com",
     messagingSenderId: "921281214360"
   };
-
 firebase.initializeApp(config);  // objeto para aceder a la bd
 var database = firebase.database(); // objeto para hacer uso de la bd
-
 var auth = firebase.auth();
 var emailAddress;
 

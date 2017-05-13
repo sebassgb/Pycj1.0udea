@@ -48,3 +48,16 @@ function colocarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de
 }
 
 
+
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    var correo=user.email;
+    var pkUsuario=quitarPuntoCorreo(correo);//
+    // aqui lo que tenga que hacer mientras el usario este conectado 
+
+
+  } else {
+
+  }
+});

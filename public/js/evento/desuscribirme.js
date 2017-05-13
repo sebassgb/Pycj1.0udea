@@ -6,9 +6,6 @@
 
 */
 
-var database = firebase.database(); // objeto para hacer uso de la bd  
-
-
 var evento="Eventos/futbol/ninja@ni com 11 05 2017 1 35/";
 var js;
 usarJsonReferencia(evento,function(value,result){
@@ -29,14 +26,11 @@ for(i in participantesviejos){
 	pkparticipantesViejos.push(participantesviejos[i]);
 }
 
+for(i in pkparticipantesViejos){
+	if(pkparticipantesViejos[i]){
 
-
-
-console.log(pkparticipantesViejos);
-
-
-
-
+	}
+}
 
 
 }
