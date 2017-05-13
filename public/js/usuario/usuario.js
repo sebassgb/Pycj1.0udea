@@ -32,9 +32,6 @@ function retornarUsuarioConcurrente(){
 }
 
 
-
-
-
 // colocar en un Js
 String.prototype.replaceAll = function(target, replacement){
   return this.split(target).join(replacement);

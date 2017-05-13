@@ -1,12 +1,12 @@
-
-
+  
 var database = firebase.database(); // objeto para hacer uso de la bd
 
+    
 
 function retornarEventosSuscrito(correo) {
 	var pkMisEventos=[];
-	var misEventos=[];
-	var pkusuario=quitarPuntoCorreo(correo);	
+    var misEventos=[];
+    var pkusuario=correo;
 	var referenciaEventossuscritos=database.ref("usuarios/"+pkusuario+"/eventosAsistencia");
 	var arrayEventosPorDeporte=[];
 
@@ -17,13 +17,12 @@ function retornarEventosSuscrito(correo) {
         // funcion de jquery que sirve para recorrer vectores es lo mismo que un for o while
         // recibe dos paramentros el array y la funcion a ejecutar con el array
 
-        var i=0;
+        
         $.each(arrayEventosPorDeporte,function(indice,valor)
         {
-        	var valores=valor.pkEvento;
-        	pkMisEventos[i]=valores; // ingreso todas las pk de los eventos en el vector mis eventos para luego ir por ellos
-
-            i++;
+        	var valores=valor.pkEvento;            
+        	pkMisEventos.push(valores); // ingreso todas las pk de los eventos en el vector mis eventos para luego ir por ellos
+            
         });
         // funciona de error
     },function(objetoError){
@@ -32,14 +31,18 @@ function retornarEventosSuscrito(correo) {
     });
 
     // luego de tener la pk debo de ir a la base de datos eventos y traer los respectivos JSON de la pk Eventos
+   
+    for(var i in pkMisEventos){
+       var referenciaeventos=database.ref("Eventos/"+pkMisEventos[i]);
+       referenciaeventos.on('child_added',function(datos){
+        var valores=datos.val();
+        misEventos.push(valores);
+       },function(objetoError){
 
-    for(var i=0;i<pkMisEventos.length;i++){
-    	var jsonEvento=database.ref(pkMisEventos[i]);
-    	misEventos[i]=jsonEvento;
+       });
+
     }
-
     console.log(misEventos);
-
     return misEventos;
 
 }

@@ -1,6 +1,6 @@
 
 // Initialize Firebase
-/*
+
   var config = {
 
     apiKey: "AIzaSyAS7jZPxJGfMUz_HWPyOWHabLwLNcY8nqE",
@@ -12,7 +12,7 @@
   };
 firebase.initializeApp(config);  // objeto para aceder a la bd
 //variables 
-*/
+
 
 var database = firebase.database(); // objeto para hacer uso de la bd
 var auth=firebase.auth();
