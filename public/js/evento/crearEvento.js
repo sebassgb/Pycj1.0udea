@@ -41,8 +41,10 @@ function crearEventoBasico(creador,eventoo) {
 
 	var referenciaMiseventos="usuarios/"+creador+"/"+"eventosAsistencia"+"/"+Deporte+"/"; // creo la referencia
 	database.ref(referenciaMiseventos).update(eventocreado); // ingreso la pk de los eventos
+}
 
-
+function selectDeporte(texto){
+	document.getElementById("deporEvento").value = texto;
 }
 
 
