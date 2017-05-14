@@ -1,4 +1,3 @@
-
 // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAS7jZPxJGfMUz_HWPyOWHabLwLNcY8nqE",
@@ -8,6 +7,18 @@
     messagingSenderId: "921281214360"
   };
 
+<<<<<<< HEAD
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAS7jZPxJGfMUz_HWPyOWHabLwLNcY8nqE",
+    authDomain: "cotejo-4e99d.firebaseapp.com",
+    databaseURL: "https://cotejo-4e99d.firebaseio.com",
+    storageBucket: "cotejo-4e99d.appspot.com",
+    messagingSenderId: "921281214360"
+  };
+
+=======
+>>>>>>> 407751200bdae893fb2a38b9858a032fcbd669fc
 firebase.initializeApp(config);  // objeto para aceder a la bd
 var database = firebase.database(); // objeto para hacer uso de la bd
 var auth=firebase.auth();
@@ -36,7 +47,7 @@ ucontra=document.getElementById("txtcontra").value;
 const promise=auth.signInWithEmailAndPassword(ucorreo,ucontra);
  //si el logeo fue exitoso lo redireccionamos al lobby
 promise.then(function(snapshot){
-    enviarPerfil(); 
+    location.href="html/drawer/Perfil.html";
 });
 
 // en caso de un error en el logeo 
@@ -49,36 +60,39 @@ promise.catch(function(error) {
 function ingresoconfacebook(){
 // para ingresar con fb lo primero que hacemos es crear 
 // una instancia para consumir el servicio de facebook
-var provider = new firebase.auth.FacebookAuthProvider();       
+var provider = new firebase.auth.FacebookAuthProvider(); 
 // solicitamos a facebook los datos que necesito
 provider.addScope('email'); // su correo
 provider.addScope('public_profile'); // su perfil publico en el cual se encuentran datos como  su id, cover ,name, primer nombre, segundo,edad, link
 
 firebase.auth().signInWithPopup(provider).then(function(result) {
+  pausa();
   // This gives you a Facebook Access Token. You can use it to access the Facebook API.
   var token = result.credential.accessToken;
   // The signed-in user info.
-  var user = result.user;
+  var users = result.user;
   // obtengo los datos del usuario y actualizo los datos del usuario en la BD usuarios
   // actualizo los datos del usuario
   var usr= {
-            nombre : user.displayName,
-            correo : user.email,
-            genero: user.gender,
-            edad : user.edad,
+            nombre : users.displayName,
+            correo : users.email,
+            genero: users.gender,
+            edad : users.edad,
             pass: "Inicio facebook",
-            foto: user.photo
+            foto: users.photo
      }
 
     const auth=firebase.auth(); // obejto usado para crear usuaios con correo y contraseña.
-    const promise=auth.createUserWithEmailAndPassword(user.email,"inicio Facebook");
+    const promise=auth.createUserWithEmailAndPassword(users.email,"inicio Facebook");
+
           // se procede a insertar en la base de datos el objeto creado, en la raiza usuarios
     
     // en caso de exito en la creacion del usuario en la BD en la parte de authentificationm  procedemos a crearlo en la Real timer "BATABASE"
     promise.then(function(snapshot){
         var sinpunto=quitarPuntoCorreo(ucorreo);
         database.ref("usuarios/"+sinpunto).update(usr);
-        //location.href="../index.html"; // lo redireccionamos a la parte de ingresar para que ingrese a la aplicacion
+        pausa();
+        location.href="../../../html/drawer/Perfil.html"; // lo redireccionamos a la parte de ingresar para que ingrese a la aplicacion
     });
         
 // en caso de ERROR se informa cual es el error
@@ -90,7 +104,7 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
     alert(errorFacebookyGoogle(error));    
 });
     
-}
+};
 
 // 3)  GOOGLE + ***********************************************
 
@@ -110,12 +124,12 @@ function googleMas(){
             correo : user.email,
             genero: user.gender,
             edad : user.edad,
-            pass: "Inicio facebook",
+            pass: "Inicio google",
             foto: user.photo
      }
 
     const auth=firebase.auth(); // obejto usado para crear usuaios con correo y contraseña.
-    const promise=auth.createUserWithEmailAndPassword(user.email,"inicio Facebook");
+    const promise=auth.createUserWithEmailAndPassword(user.email,"inicio Google");
     // se procede a insertar en la base de datos el objeto creado, en la raiza usuarios
     
     // en caso de exito en la creacion del usuario en la BD en la parte de authentificationm  procedemos a crearlo en la Real timer "BATABASE"
@@ -149,4 +163,10 @@ function quitarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de 
 function colocarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de los correos por espacios para poder ingresarlos en la raiz del nodo de la bd en firebase  
     return mcorreo.replaceAll(" ",".");   
     
+}
+
+  function pausa(){
+  setTimeout(function (){
+    console.log("holi");
+  }, 5000);
 }

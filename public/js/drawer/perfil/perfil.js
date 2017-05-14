@@ -101,6 +101,7 @@ function eliminar(elemento)//Disminuimos el numero de deportes
 }
 
 function llenarInfo(){
+
   //var identificador = retornarUsuarioConcurrente();//Me retorna el usuario actual
   var referencia = "usuarios/"+retornarUsuarioConcurrente();
   var bdEventos=database.ref(referencia);
@@ -126,10 +127,13 @@ function guardarPerfil(){//Retornamos el vector con los deportes favoritos
         deporte5: listaFavoritos[4]
       } //cuando se crea un evento el unico participante en el momento es el creador de este
    }
+
+   var referencia = "usuarios/"+"a@a com";//Buscamos la referencia
+  var bdEventos=database.ref(referencia).update(favoritos);//Actualizamos la BD con los deportes favoritos
 }
 
  function retornarDeportesFavoritos(){//Retorna un vector con los deportes favoritos
- var referencia = "usuarios/"+retornarUsuarioConcurrente()+"/"+"deportesFavoritos";
+ var referencia = "usuarios/"+"a@a com"+"/"+"deportesFavoritos";
   var bdEventos=database.ref(referencia);
   bdEventos.on('value',function(datos){
         //la primera funcion recorremos la lista de usuarios  
@@ -147,3 +151,35 @@ function guardarPerfil(){//Retornamos el vector con los deportes favoritos
     }); 
   return listaFavsDefinitiva;
  }
+
+function retornarUsuarioConcurrente(){
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+   var user = firebase.auth().currentUser;
+    console.log(user);  
+    var correo=user.email;
+    correo =quitarPuntoCorreo(correo);
+    return correo;
+  } else {
+    return null;
+  }  
+});
+  
+  
+}
+
+
+// colocar en un Js
+String.prototype.replaceAll = function(target, replacement){
+  return this.split(target).join(replacement);
+};// funcion que remplaza todas la ocurrencias de un string en un string por otro string target es el string a remplazar y replacement es el string por el que se desea remplazar como se usa prototype esta funcion se invoca sobre los obejtos de tipo string
+
+function quitarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de los correos por espacios para poder ingresarlos en la raiz del nodo de la bd en firebase  
+    var resp=mcorreo.replaceAll("."," ");   
+    return resp;
+}
+
+function colocarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de los correos por espacios para poder ingresarlos en la raiz del nodo de la bd en firebase  
+    return mcorreo.replaceAll(" ",".");   
+    
+}

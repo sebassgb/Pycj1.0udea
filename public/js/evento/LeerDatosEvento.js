@@ -1,6 +1,5 @@
 // con este script leemos los datos del evento,para luego crearlo 
-
-
+var fecha= new Date();
 var nomEvento;
 var deporEvento;
 var numPersonas;
@@ -10,13 +9,13 @@ var year;
 var hora;
 var minuto;
 var lugar;
-
 var Genero;
 var edadMin;
 var edadMax;
 var notas;
 
-
+//damy12345@hotmail.com
+//puma12
 
 
 function genero(gender){
@@ -30,7 +29,14 @@ function guardeDatos(){/*Esta función al darle click al boton guardar del html 
     numPersonas =  document.getElementById("numPersonas").value;
     dia=  document.getElementById("dia").value;
     mes=  document.getElementById("mes").value;
-    year=  document.getElementById("year").value;
+    if(document.getElementById("year").value==fecha.getFullYear()||document.getElementById("year").value==fecha.getFullYear()+1){
+      year=  document.getElementById("year").value;
+    }
+    else{
+      year=fecha.getFullYear();
+      alert("Excedes en el numero de año permitido");
+    }
+    
     hora =  document.getElementById("hora").value;
     minuto=  document.getElementById("minuto").value;
     lugar=  document.getElementById("lugar").value;

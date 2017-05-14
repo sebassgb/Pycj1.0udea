@@ -1,9 +1,9 @@
 
 // ruta de las vistas
 
-var perfil="drawer/Perfil.html";
+var perfil="../../html/drawer/Perfil.html";
 var inicioDeSesion="../index.html";
-var lobby="";
+var lobby="../../html/barraInferior/lobby/lobby.html";
 var creditos="";
 var crearEvento="";
 
@@ -16,5 +16,7 @@ function enviarInicioSesion(){
 location.href=inicioDeSesion; // lo redireccionamos a la parte de ingresar para que ingrese a la aplicacion
 }
 
-
+function enviarLobby() {
+	  location.href=lobby; 
+}
 
