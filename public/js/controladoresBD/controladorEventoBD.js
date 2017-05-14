@@ -1,15 +1,26 @@
 //var refe = database.ref('Eventos/futbol/ninja@ni com 11 05 2017 1 35/informacion/participante');
-var machete = 0;
+var yaSeValido = false;
 function usarValidacionRelacionEvento(pkUsuario, evento, callback){
-	
-	callback(0, true);
+	if(yaSeValido == false){
+		console.log("usar");
+		yaSeValido = true;
+		var useSoloUnaVes = 0;
+		useEventosSuscritos(pkUsuario, function(value, result){
+			if(useSoloUnaVes == 0){
+				useSoloUnaVes = 1;
+				console.log(pkUsuario);
+				callback(0, true);
+			}
+		})
+	}
 }
 
 function suscribirUsuarioEvento(pkUsuario, evento, callback){
 	var referencia = "Eventos/"+evento.deporte+"/";
 	var pkEvento = JsonToPkEvento(evento);
 	referencia = referencia+pkEvento+"/informacion";
-	machete = 0;
+	var machete = 0;
+	yaSeValido = false;
 	//Esta linea es equivalente a decir result = el json de la referencia dada
 	//todo lo que sigue que dependa del json referencia debe de estar dentro de
 	//la funcion callback

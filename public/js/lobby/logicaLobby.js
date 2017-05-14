@@ -127,7 +127,7 @@ function llenarInfoCompleta(posVector, elemento){
 
 function subscribirUsuario(evento, posVector, elemento){
 	//var pkUsuario = retornarUsuarioConcurrente();
-	var pkUsuario = "porque@nose com";
+	var pkUsuario = "a@a com";
 	suscribirUsuarioEvento(pkUsuario, evento, function(value, result){
 		if(result == false){
 			//Mensaje de error
