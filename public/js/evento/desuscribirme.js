@@ -10,16 +10,20 @@ var reevento="Eventos/Buceo Pulmon Libre/hp@hp com 01 02 2017 10 08/";
 var js;
 usarJsonReferencia(reevento,function(value,result){
 	js=result;
-	quitarmeDelEvento("a@a com",js);
+	salirDelEvento("hp@hp com",js);
 
 });
 
+var bpartipante=false;
 
 
-function quitarmeDelEvento(pkusuario,evento) {
+function salirDelEvento(pkusuario,evento) {
 
-eliminarPkusuarioListaParticipantes(pkusuario,evento);
-quitarEventoDeListaEventosSuscritos(pkusuario,evento);
+	eliminarPkusuarioListaParticipantes(pkusuario,evento);
+
+	if(bpartipante){// siginifica que no encontro el participante
+		quitarEventoDeListaEventosSuscritos(pkusuario,evento);
+	}
 
 
 
@@ -43,9 +47,10 @@ function eliminarPkusuarioListaParticipantes(pkUsuarioELiminar,evento){
 		if(pkviejo==pkUsuarioELiminar){
 			var referenciaParticipante="Eventos/"+evento.deporte+"/"+JsonToPkEvento(evento)+"/informacion/"+"participantes/"+pkfirebase[j]+"/pkUsuario";
 			database.ref(referenciaParticipante).remove();
+			bpartipante=true;
 			break;
 		}else{
-			alert("participante no encontrado");	
+			alert("ya te saliste de  este evento");
 
 		}
 	}
@@ -59,29 +64,22 @@ function quitarEventoDeListaEventosSuscritos(pkUsuario,evento){
 
 		var eventosAsistenciaDeporteX=result;
 		var fireBaseKey=firebaseKey;
-		var eventoBorrar=JsonToPkEvento(evento);	
-		
+		var eventoBorrar=JsonToPkEvento(evento);
+
 		
 		for(k in eventosAsistenciaDeporteX){
 			var event=eventosAsistenciaDeporteX[k];
 
 			if(event==eventoBorrar){
 				var referenciaEventoSuscritoBorrar="usuarios/"+pkUsuario+"/"+"eventosAsistencia/"+evento.deporte+"/"+fireBaseKey+"/pkEvento";
-				console.log(referenciaEventoSuscritoBorrar);
 				database.ref(referenciaEventoSuscritoBorrar).remove();
-				console.log("Te has inscrito al evento ti@");
+				alert("Te has retirado del evento ti@");
 				break;
 			}else{
-				console.log("Evento no se encontro en la lista de eventos suscritos");
+				alert("Evento no se encontro en la lista de eventos suscritos");
 			}
 
 		}
-
-
-
-
-
-
 
 	});
 
