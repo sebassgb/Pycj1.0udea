@@ -2,15 +2,24 @@
 var yaSeValido = false;
 function usarValidacionRelacionEvento(pkUsuario, evento, callback){
 	if(yaSeValido == false){
-		console.log("usar");
 		yaSeValido = true;
 		var useSoloUnaVes = 0;
 		useEventosSuscritos(pkUsuario, function(value, result){
 			if(useSoloUnaVes == 0){
 				useSoloUnaVes = 1;
-				console.log(pkUsuario);
 				for(j in result){
-					console.log(result[j]);
+					var auxEvento = pkEventoToJson(result[j]);
+					if(evento.year == auxEvento.year &&
+						evento.mes == auxEvento.mes &&
+						evento.dia == auxEvento.dia){
+						var horaA = parseFloat(evento.hora+"."+evento.minuto);
+						var horaB = parseFloat(auxEvento.hora+"."+auxEvento.minuto);
+						var diferencia = horaA - horaB;
+						if(Math.abs(diferencia) <1.1){
+							callback(0, false);
+							return;
+						}
+					}
 				}
 				callback(0, true);
 			}

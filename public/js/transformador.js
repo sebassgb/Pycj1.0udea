@@ -53,6 +53,19 @@ function JsonToPkEvento(json){
     return PK;
 }
 
+function pkEventoToJson(pkEvento){
+	var arrEv = pkEvento.split(" ");
+	var resJson = {
+		creador : arrEv[0].toString()+" "+arrEv[1].toString(),
+		dia : arrEv[2].toString(),
+		mes : arrEv[3].toString(),
+		year : arrEv[4].toString(),
+		hora : arrEv[5].toString(),
+		minuto : arrEv[6].toString(),
+	}
+	return resJson;
+}
+
 // colocar en un Js
 String.prototype.replaceAll = function(target, replacement){
   return this.split(target).join(replacement);

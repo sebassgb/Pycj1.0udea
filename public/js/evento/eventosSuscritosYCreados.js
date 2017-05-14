@@ -13,6 +13,10 @@ function useEventosSuscritos(pkusuario,callback) {
     usarJsonReferencia(referenciaEventossuscritos,function(value,result){// esta funcion retorna en la variable result el vector con los pk eventos
         if(useSoloUnaVes == 0){
             useSoloUnaVes = 1;
+            if(typeof(result) == "string"){
+                callback(0,[]);
+                return;
+            }
             for(j in result){ // recorro el usuarion y almaceno las pk en el vector pkMisEventos
                  for(k in result[j]){
                     pkMisEventos.push(result[j][k].pkEvento);

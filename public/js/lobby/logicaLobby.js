@@ -127,13 +127,15 @@ function llenarInfoCompleta(posVector, elemento){
 
 function subscribirUsuario(evento, posVector, elemento){
 	//var pkUsuario = retornarUsuarioConcurrente();
-	var pkUsuario = "a@a com";
+	var pkUsuario = "platano@pt com";
 	suscribirUsuarioEvento(pkUsuario, evento, function(value, result){
 		if(result == false){
 			//Mensaje de error
+			console.log("NO LO REGISTRO");
 			return;
 		}
 		//Mensaje de exito
+		console.log("LO REGISTRO");
 		eventos[posVector].cuposLlenos = parseInt(eventos[posVector].cuposLlenos)+1;
 		elemento.getElementsByClassName("respuestanombreInfo")[1].innerHTML = eventos[posVector].cuposLlenos+"/"+eventos[posVector].cuposTotales;
 		clickDiv.getElementsByClassName("respuestanombreInfo")[1].innerHTML = eventos[posVector].cuposLlenos+"/"+eventos[posVector].cuposTotales;
