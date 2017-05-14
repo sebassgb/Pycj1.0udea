@@ -5,7 +5,8 @@ function usarValidacionRelacionEvento(pkUsuario, evento, callback){
 		yaSeValido = true;
 		var useSoloUnaVes = 0;
 		useEventosSuscritos(pkUsuario, function(value, result){
-			if(useSoloUnaVes == 0){
+
+		if(useSoloUnaVes == 0){
 				useSoloUnaVes = 1;
 				for(j in result){
 					var auxEvento = pkEventoToJson(result[j]);

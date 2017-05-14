@@ -3,8 +3,8 @@
 function crearEventoBasico(creador,eventoo) {
 
 	// validamos que pueda crear el evento por su disponibilidad
-
 	usarValidacionRelacionEvento(creador, eventoo,function(value,result){
+
 
 		if(result==false){
 			alert("tiene un evento en esa fecha");
@@ -19,7 +19,7 @@ function crearEventoBasico(creador,eventoo) {
 			
 			// 1) ingreso el evento creado a la lista de eventos del usuario 
 			var eventoscreados="eventosCreados";	
-			var pkMisEventos=Deporte+"/"+creador+" "+fecha+" "+hora;
+			var pkMisEventos=creador+" "+fecha+" "+hora;
 			var referencia="usuarios/"+creador+"/"+eventoscreados+"/"+Deporte+"/";
 
 			var eventocreado={
@@ -45,7 +45,7 @@ function crearEventoBasico(creador,eventoo) {
 
 			//3) ingreso en pkeventos a la lista de los eventos de asistencia del usuario 
 
-			var referenciaMiseventos="usuarios/"+creador+"/"+"eventosAsistencia"+"/"; // creo la referencia
+			var referenciaMiseventos="usuarios/"+creador+"/"+"eventosAsistencia"+Deporte+"/"; // creo la referencia
 			database.ref(referenciaMiseventos).push(eventocreado); // ingreso la pk de los eventos
 
 		}
@@ -57,5 +57,7 @@ function crearEventoBasico(creador,eventoo) {
 function selectDeporte(texto){
 	document.getElementById("deporEvento").value = texto;
 }
+
+
 
 

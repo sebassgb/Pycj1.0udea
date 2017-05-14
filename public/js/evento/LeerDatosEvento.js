@@ -68,7 +68,8 @@ function guardeDatos(){/*Esta función al darle click al boton guardar del html 
       minuto: minuto,      
       //participantes:{pkUsuario:pkUsuario} //cuando se crea un evento el unico participante en el momento es el creador de este
    }     
-   // creamos el evento en la base de datos 
+   // creamos el evento en la base de datos
+
     crearEventoBasico(pkUsuario,evento);
     } else {
       alert("no hay nadie en sesion");
