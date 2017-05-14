@@ -1,9 +1,5 @@
 // LOS METODOS NO RETORNAN NADA
 
-
-var database = firebase.database(); // objeto para hacer uso de la bd  
-
-
 //***********EVENTOS SUSCRITOS***********************************
 
 function useEventosSuscritos(pkusuario,callback) { 

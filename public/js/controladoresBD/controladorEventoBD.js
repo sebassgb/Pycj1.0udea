@@ -27,6 +27,13 @@ function usarValidacionRelacionEvento(pkUsuario, evento, callback){
 	}
 }
 
+
+
+
+
+
+
+
 function suscribirUsuarioEvento(pkUsuario, evento, callback){
 	var referencia = "Eventos/"+evento.deporte+"/";
 	var pkEvento = JsonToPkEvento(evento);

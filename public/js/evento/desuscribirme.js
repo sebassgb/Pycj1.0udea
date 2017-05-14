@@ -17,10 +17,12 @@ usarJsonReferencia(evento,function(value,result){
 
 
 
+
+
+
+
 function quitarmeDelEvento(pkusuario,evento) {
 
-
-	
 
 
 
