@@ -4,33 +4,24 @@
 // Initialize Firebase
  
 
-
-
-function retornarUsuarioConcurrente(){
-	var user = firebase.auth().currentUser;
-	if (user) {
-		var correo=user.email;
-		correo =quitarPuntoCorreo(correo);
-		return correo;
-	} else {
-	  return null;
-	}
-}
-
-
-function alternitoUsuarioConcurrente(callback){
+function retornarUsuarioConcurrente(callback){
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) { 
-      callback(0,user);
+      callback(0,quitarPuntoCorreo(user.email));
     } else {
     }
   });
 
-
 }
-alternitoUsuarioConcurrente(function(value,result){
-  alert(result.email);
+
+
+ //modo de uso usuario concurrete
+ 
+retornarUsuarioConcurrente(function(value,result){
+  alert(result); // en result se encuentra la pkdel usuario conectado
 });
+
+
 
 
 // colocar en un Js
@@ -51,14 +42,3 @@ function colocarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de
 
 
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    var correo=user.email;
-    var pkUsuario=quitarPuntoCorreo(correo);//
-    // aqui lo que tenga que hacer mientras el usario este conectado 
-
-
-  } else {
-
-  }
-});
