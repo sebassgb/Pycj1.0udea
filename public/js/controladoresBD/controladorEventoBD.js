@@ -1,7 +1,11 @@
 //var refe = database.ref('Eventos/futbol/ninja@ni com 11 05 2017 1 35/informacion/participante');
 var yaSeValido = false;
+// NOTA : el que necesite utilizar este metodo debe colocar la varibale yaSeValido=false;
+
 function usarValidacionRelacionEvento(pkUsuario, evento, callback){
+
 	if(yaSeValido == false){
+
 		yaSeValido = true;
 		var useSoloUnaVes = 0;
 		useEventosSuscritos(pkUsuario, function(value, result){

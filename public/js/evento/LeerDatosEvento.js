@@ -22,6 +22,10 @@ function genero(gender){
   Genero = gender;
 }
 
+
+
+
+
 function guardeDatos(){/*Esta función al darle click al boton guardar del html me recupera datos y los guarda en un JSON*/
   
     nomEvento =  document.getElementById("nomEvento").value;
@@ -45,39 +49,38 @@ function guardeDatos(){/*Esta función al darle click al boton guardar del html 
     notas =  document.getElementById("editeNota").value; 
 
     // leemos que usuario se encuentra  logeado, el cual es el creador del evento
-  var pkUsuario;
-  firebase.auth().onAuthStateChanged(function(user) {
+    var pkUsuario;
+    firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-    pkUsuario =user.email;
-    pkUsuario=quitarPuntoCorreo(pkUsuario);
-    var evento= {//JSON que contiene datos principales del evento
-      creador:pkUsuario,
-      nombre: nomEvento,
-      edadMinima: edadMin,
-      edadMaxima: edadMax,
-      deporte: deporEvento,
-      cuposTotales: numPersonas,
-      cuposLlenos:1, // incialmente ya que solo el que creo el eveo esta inscrito en el
-      genero: Genero,
-      notas: notas,      
-      lugar: lugar,
-      dia: dia,
-      mes: mes,
-      year: year,      
-      hora: hora,
-      minuto: minuto,      
-      //participantes:{pkUsuario:pkUsuario} //cuando se crea un evento el unico participante en el momento es el creador de este
-   }     
-   // creamos el evento en la base de datos
 
-    crearEventoBasico(pkUsuario,evento);
-    } else {
+
+      pkUsuario =user.email;
+      pkUsuario=quitarPuntoCorreo(pkUsuario);
+      var evento= {//JSON que contiene datos principales del evento
+        creador:pkUsuario,
+        nombre: nomEvento,
+        edadMinima: edadMin,
+        edadMaxima: edadMax,
+        deporte: deporEvento,
+        cuposTotales: numPersonas,
+        cuposLlenos:1, // incialmente ya que solo el que creo el eveo esta inscrito en el
+        genero: Genero,
+        notas: notas,      
+        lugar: lugar,
+        dia: dia,
+        mes: mes,
+        year: year,      
+        hora: hora,
+        minuto: minuto,
+        }      
+        //participantes:{pkUsuario:pkUsuario} //cuando se crea un evento el unico participante en el momento es el creador de este
+
+      crearEventoBasico(pkUsuario,evento);
+      // creamos el evento en la base de datos
+   }else {
       alert("no hay nadie en sesion");
-    }
+   }
   });
-
-  
- 
   
 
 }

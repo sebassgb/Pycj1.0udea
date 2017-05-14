@@ -2,12 +2,17 @@
 // funcion que crea el evento con los datos basicos
 function crearEventoBasico(creador,eventoo) {
 
-	// validamos que pueda crear el evento por su disponibilidad
-	usarValidacionRelacionEvento(creador, eventoo,function(value,result){
 
+	creador="a@a com";
+	// validamos que pueda crear el evento por su disponibilidad
+
+
+	yaSeValido=false;
+	usarValidacionRelacionEvento(creador, eventoo,function(value,result){
 
 		if(result==false){
 			alert("tiene un evento en esa fecha");
+
 		}else{
 
 			var fecha=eventoo.dia+" "+eventoo.mes+" "+eventoo.year;
@@ -45,8 +50,10 @@ function crearEventoBasico(creador,eventoo) {
 
 			//3) ingreso en pkeventos a la lista de los eventos de asistencia del usuario 
 
-			var referenciaMiseventos="usuarios/"+creador+"/"+"eventosAsistencia"+Deporte+"/"; // creo la referencia
+			var referenciaMiseventos="usuarios/"+creador+"/"+"eventosAsistencia/"+Deporte+"/"; // creo la referencia
 			database.ref(referenciaMiseventos).push(eventocreado); // ingreso la pk de los eventos
+
+			alert("Exito en la creacion del evento");
 
 		}
 	});	
