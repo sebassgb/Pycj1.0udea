@@ -180,7 +180,11 @@ function activarSeccionesInvisibles(){
 
 
 function mainLobby(){
-
+	var eventosIniciales = retornarEventos("Judo");
+	setTimeout(function (){
+		var arrEventoOrdenado = ordenarEventoFecha(eventosIniciales);
+		addListaEventoAlFinal(arrEventoOrdenado);
+	}, 2500);
 }
 
 function mainDeporte(xdeporte){
@@ -192,10 +196,30 @@ function mainDeporte(xdeporte){
 }
 
 function mainMisEventos(){
+	var eventosIniciales = retornarEventos("Natacion");
+	setTimeout(function (){
+		var arrEventoOrdenado = ordenarEventoFecha(eventosIniciales);
+		addListaEventoAlFinal(arrEventoOrdenado);
+	}, 2500);
 
 }
 
-mainDeporte("Buceo Pulmon Libre");
+function main(){
+	var URLactual = window.location.toString();
+	var entradaVec = URLactual.split("/");
+	var entrada = entradaVec[entradaVec.length-1];
+	if(entrada == "lobby"){
+		mainLobby();
+	}else{
+		if(entrada == "misEventos"){
+			mainMisEventos();
+		}else{
+			mainDeporte(entrada);
+		}
+	}	
+}
+
+main();
 
 
 
