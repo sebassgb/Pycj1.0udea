@@ -2,15 +2,7 @@
 // 1 saber el usuarion concuerrente
 // 2 retorna la informacion del perfil del usuaruio
 // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAS7jZPxJGfMUz_HWPyOWHabLwLNcY8nqE",
-    authDomain: "cotejo-4e99d.firebaseapp.com",
-    databaseURL: "https://cotejo-4e99d.firebaseio.com",
-    storageBucket: "cotejo-4e99d.appspot.com",
-    messagingSenderId: "921281214360"    
-  };
-
-firebase.initializeApp(config);  // objeto para aceder a la bd
+ 
 
 
 
@@ -24,6 +16,21 @@ function retornarUsuarioConcurrente(){
 	  return null;
 	}
 }
+
+
+function alternitoUsuarioConcurrente(callback){
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) { 
+      callback(0,user);
+    } else {
+    }
+  });
+
+
+}
+alternitoUsuarioConcurrente(function(value,result){
+  alert(result.email);
+});
 
 
 // colocar en un Js

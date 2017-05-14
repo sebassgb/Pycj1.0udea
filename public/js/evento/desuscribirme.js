@@ -25,9 +25,9 @@ var pkparticipantesViejos=[]; // creo un vector con la pk de los participantes d
 for(i in participantesviejos){
 	pkparticipantesViejos.push(participantesviejos[i]);
 }
-
+/// recorrro el vector de la pk de participantes y elimino el que
 for(i in pkparticipantesViejos){
-	if(pkparticipantesViejos[i]){
+	if(pkparticipantesViejos[i]==pkusuario){
 
 	}
 }

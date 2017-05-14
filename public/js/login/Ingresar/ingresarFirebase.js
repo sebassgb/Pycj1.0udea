@@ -7,18 +7,8 @@
     messagingSenderId: "921281214360"
   };
 
-<<<<<<< HEAD
-// Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAS7jZPxJGfMUz_HWPyOWHabLwLNcY8nqE",
-    authDomain: "cotejo-4e99d.firebaseapp.com",
-    databaseURL: "https://cotejo-4e99d.firebaseio.com",
-    storageBucket: "cotejo-4e99d.appspot.com",
-    messagingSenderId: "921281214360"
-  };
 
-=======
->>>>>>> 407751200bdae893fb2a38b9858a032fcbd669fc
+
 firebase.initializeApp(config);  // objeto para aceder a la bd
 var database = firebase.database(); // objeto para hacer uso de la bd
 var auth=firebase.auth();
