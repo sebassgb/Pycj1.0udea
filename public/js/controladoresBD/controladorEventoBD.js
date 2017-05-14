@@ -9,6 +9,9 @@ function usarValidacionRelacionEvento(pkUsuario, evento, callback){
 			if(useSoloUnaVes == 0){
 				useSoloUnaVes = 1;
 				console.log(pkUsuario);
+				for(j in result){
+					console.log(result[j]);
+				}
 				callback(0, true);
 			}
 		})
