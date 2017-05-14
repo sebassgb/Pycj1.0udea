@@ -139,7 +139,7 @@ textarea{
 	z-index: 100;
 }
 
-ul {
+divVistaEventoNoRelacionado ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -151,7 +151,7 @@ ul {
 		width: 77vw;
 }
 
-li {
+divVistaEventoNoRelacionado li {
     float: left;
 }
 
