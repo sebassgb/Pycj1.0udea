@@ -66,7 +66,7 @@ function guardeDatos(){/*Esta función al darle click al boton guardar del html 
       year: year,      
       hora: hora,
       minuto: minuto,      
-      participante:{pkUsuario}, //cuando se crea un evento el unico participante en el momento es el creador de este
+      //participantes:{pkUsuario:pkUsuario} //cuando se crea un evento el unico participante en el momento es el creador de este
    }     
    // creamos el evento en la base de datos 
     crearEventoBasico(pkUsuario,evento);

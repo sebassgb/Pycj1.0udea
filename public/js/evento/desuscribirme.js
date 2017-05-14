@@ -6,11 +6,11 @@
 
 */
 
-var evento="Eventos/futbol/ninja@ni com 11 05 2017 1 35/";
+var evento="Eventos/futbol/ninja@ni com 11 05 2017 8 21/";
 var js;
 usarJsonReferencia(evento,function(value,result){
 	js=result;	
-	quitarmeDelEvento("ninja@ni com",js);
+	quitarmeDelEvento("porque@nose com",js);
 
 });
 
@@ -19,21 +19,44 @@ usarJsonReferencia(evento,function(value,result){
 
 function quitarmeDelEvento(pkusuario,evento) {
 
-var participantesviejos=evento.participante; // almaceno los participantes antiguos en un vector
 
-var pkparticipantesViejos=[]; // creo un vector con la pk de los participantes del evento
-for(i in participantesviejos){
-	pkparticipantesViejos.push(participantesviejos[i]);
+	
+
+
+
+
 }
-/// recorrro el vector de la pk de participantes y elimino el que
-for(i in pkparticipantesViejos){
-	if(pkparticipantesViejos[i]==pkusuario){
 
+function crearNuevaListaParticipantes(pkUsuarioELiminar,evento){
+
+	var participantesviejos=evento.participante; // almaceno los participantes antiguos en un vector
+
+	var pkparticipantesViejos=[]; // creo un vector con la pk de los participantes del evento
+	for(i in participantesviejos){
+		pkparticipantesViejos.push(participantesviejos[i]);
+	}
+
+	for(j in pkparticipantesViejos){
+	var pkviejo=pkparticipantesViejos[j].pkUsuario;
+	
+	if(j=pkparticipantesViejos.length){
+
+	}
+
+	if(pkviejo==pkusuario){
+		console.log("igual");
+	}else{
+		console.log("nada que ver");
 	}
 }
 
 
 }
+
+
+
+
+
 
 
 
@@ -43,4 +66,3 @@ function usarJsonReferencia(refStr, callback){
         callback(0, snapshot.val());//Se ejecuta callback para usar la referencia cuando se tenga
     });
 }
-

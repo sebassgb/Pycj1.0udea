@@ -24,23 +24,34 @@ function crearEventoBasico(creador,eventoo) {
 	// 1) ingreso el evento creado a la lista de eventos del usuario 
 	var eventoscreados="eventosCreados";	
 	var pkMisEventos=Deporte+"/"+creador+" "+fecha+" "+hora;
-	var referencia="usuarios/"+creador+"/"+eventoscreados+"/"+Deporte;
+	var referencia="usuarios/"+creador+"/"+eventoscreados+"/"+Deporte+"/";
 
 	var eventocreado={
 		pkEvento:pkMisEventos
 	}
 
-	database.ref(referencia).update(eventocreado);
+	database.ref(referencia).push(eventocreado);
+
 
 	// 2) ingreso a la bd de eventos el evento
 	// creo la clave primaria	
-	var pkEvento=Deporte+"/"+creador+" "+fecha+" "+hora+"/"+"informacion";
-	database.ref("Eventos/"+pkEvento).update(eventoo);
+	var pkEvento="Eventos/"+Deporte+"/"+creador+" "+fecha+" "+hora+"/"+"informacion";
+	database.ref(pkEvento).update(eventoo);
+
+
+	var parti={
+		pkUsuario:creador
+	}
+
+	var referenciaparticipantes=pkEvento+"/participantes";
+	database.ref(referenciaparticipantes).push(parti);
+
 
 	//3) ingreso en pkeventos a la lista de los eventos de asistencia del usuario 
 
-	var referenciaMiseventos="usuarios/"+creador+"/"+"eventosAsistencia"+"/"+Deporte+"/"; // creo la referencia
-	database.ref(referenciaMiseventos).update(eventocreado); // ingreso la pk de los eventos
+
+	var referenciaMiseventos="usuarios/"+creador+"/"+"eventosAsistencia"+"/"+Deporte; // creo la referencia
+	database.ref(referenciaMiseventos).push(eventocreado); // ingreso la pk de los eventos
 }
 
 function selectDeporte(texto){
