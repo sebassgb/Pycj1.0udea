@@ -103,17 +103,24 @@ function eliminar(elemento)//Disminuimos el numero de deportes
 function llenarInfo(){
 
   //var identificador = retornarUsuarioConcurrente();//Me retorna el usuario actual
-  var referencia = "usuarios/"+retornarUsuarioConcurrente();
+
+
+  
+
+retornarUsuarioConcurrente(function(value,result){  
+  var referencia = "usuarios/"+result;
   var bdEventos=database.ref(referencia);
   bdEventos.on('value',function(datos){
-        //la primera funcion recorremos la lista de usuarios  
-        var datos =  datos.val();// obtenemos los valores raices del nodo usuarios      
-     document.getElementsByClassName("nombrePerfil")[0].innerHTML = datos.nombre;
-     document.getElementsByClassName("generoPerfil")[0].innerHTML = datos.genero;
-     document.getElementsByClassName("edadPerfil")[0].innerHTML = datos.edad      
-    },function(objetoError){
-        //alert("error en la lectura "+objetoError.code);        
-    }); 
+          //la primera funcion recorremos la lista de usuarios  
+       var datos =  datos.val();// obtenemos los valores raices del nodo usuarios      
+       document.getElementsByClassName("nombrePerfil")[0].innerHTML = datos.nombre;
+       document.getElementsByClassName("generoPerfil")[0].innerHTML = datos.genero;
+       document.getElementsByClassName("edadPerfil")[0].innerHTML = datos.edad      
+      },function(objetoError){
+          //alert("error en la lectura "+objetoError.code);        
+      }); 
+});
+  
 }
 
 function guardarPerfil(){//Retornamos el vector con los deportes favoritos
@@ -128,13 +135,22 @@ function guardarPerfil(){//Retornamos el vector con los deportes favoritos
       } //cuando se crea un evento el unico participante en el momento es el creador de este
    }
 
-   var referencia = "usuarios/"+"a@a com";//Buscamos la referencia
-  var bdEventos=database.ref(referencia).update(favoritos);//Actualizamos la BD con los deportes favoritos
+   
+
+retornarUsuarioConcurrente(function(value,result){
+    var referencia = "usuarios/"+result;//Buscamos la referencia
+    var bdEventos=database.ref(referencia).update(favoritos);//Actualizamos la BD con los deportes favoritos
+});
+
 }
 
  function retornarDeportesFavoritos(){//Retorna un vector con los deportes favoritos
- var referencia = "usuarios/"+"a@a com"+"/"+"deportesFavoritos";
-  var bdEventos=database.ref(referencia);
+
+
+retornarUsuarioConcurrente(function(value,result){
+var referencia = "usuarios/"+result+"/"+"deportesFavoritos";
+
+var bdEventos=database.ref(referencia);
   bdEventos.on('value',function(datos){
         //la primera funcion recorremos la lista de usuarios  
         var datos =  datos.val();// obtenemos los valores raices del nodo usuarios
@@ -150,36 +166,7 @@ function guardarPerfil(){//Retornamos el vector con los deportes favoritos
         //alert("error en la lectura "+objetoError.code);        
     }); 
   return listaFavsDefinitiva;
- }
-
-function retornarUsuarioConcurrente(){
-  firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-   var user = firebase.auth().currentUser;
-    console.log(user);  
-    var correo=user.email;
-    correo =quitarPuntoCorreo(correo);
-    return correo;
-  } else {
-    return null;
-  }  
-});
-  
+}); 
   
 }
 
-
-// colocar en un Js
-String.prototype.replaceAll = function(target, replacement){
-  return this.split(target).join(replacement);
-};// funcion que remplaza todas la ocurrencias de un string en un string por otro string target es el string a remplazar y replacement es el string por el que se desea remplazar como se usa prototype esta funcion se invoca sobre los obejtos de tipo string
-
-function quitarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de los correos por espacios para poder ingresarlos en la raiz del nodo de la bd en firebase  
-    var resp=mcorreo.replaceAll("."," ");   
-    return resp;
-}
-
-function colocarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de los correos por espacios para poder ingresarlos en la raiz del nodo de la bd en firebase  
-    return mcorreo.replaceAll(" ",".");   
-    
-}

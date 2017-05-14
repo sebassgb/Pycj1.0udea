@@ -16,10 +16,11 @@ function retornarUsuarioConcurrente(callback){
 
 
  //modo de uso usuario concurrete
- 
+ /*
 retornarUsuarioConcurrente(function(value,result){
   alert(result); // en result se encuentra la pkdel usuario conectado
 });
+*/
 
 
 
