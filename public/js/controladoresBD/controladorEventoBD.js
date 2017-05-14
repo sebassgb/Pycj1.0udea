@@ -51,7 +51,7 @@ function suscribirUsuarioEvento(pkUsuario, evento, callback){
 					//ingresa la pk del usuario a la  lista de participantes del evento.
 					if(machete == 1){
 						machete = 2;
-						var auxReferencia = referencia+"/participante";
+						var auxReferencia = referencia+"/participantes";
 						//alert("participante");
 						pushReferencia(auxReferencia, {pkUsuario : pkUsuario})
 					}

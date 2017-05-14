@@ -50,7 +50,7 @@ function crearEventoBasico(creador,eventoo) {
 	//3) ingreso en pkeventos a la lista de los eventos de asistencia del usuario 
 
 
-	var referenciaMiseventos="usuarios/"+creador+"/"+"eventosAsistencia"+"/"+Deporte; // creo la referencia
+	var referenciaMiseventos="usuarios/"+creador+"/"+"eventosAsistencia"+"/"; // creo la referencia
 	database.ref(referenciaMiseventos).push(eventocreado); // ingreso la pk de los eventos
 }
 

@@ -28,6 +28,9 @@ function esMasCercano(primero, segundo){
 }
 
 function ordenarEventoFecha(eventos){
+	if(eventos.length == 0){
+		return [];
+	}
 	var res = [];
 	res[0] = eventos[0];
 	for(var i = 1; i < eventos.length; i++){
