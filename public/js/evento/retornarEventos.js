@@ -1,4 +1,4 @@
-var btn = document.getElementById("btnprueba");
+fvar btn = document.getElementById("btnprueba");
 var deportee="futbol";
 
 

@@ -57,7 +57,6 @@ function JsonToPkEvento(json){
 }
 
 function pkEventoToJson(pkEvento){
-	console.log(pkEvento);
 	var arrEv = pkEvento.split(" ");
 	var resJson = {
 		creador : arrEv[0].toString()+" "+arrEv[1].toString(),
