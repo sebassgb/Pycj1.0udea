@@ -6,7 +6,7 @@
 
 */
 
-var reevento="Eventos/Buceo Pulmon Libre/hp@hp com 01 02 2017 10 08/";
+var reevento="Eventos/Judo/a@a com 11 02 2017 1 50/";
 var js;
 usarJsonReferencia(reevento,function(value,result){
 	js=result;

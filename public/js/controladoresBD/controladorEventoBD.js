@@ -40,17 +40,25 @@ function usarValidacionRelacionEvento(pkUsuario, evento, callback){
 
 
 function suscribirUsuarioEvento(pkUsuario, evento, callback){
+	
+
+
 	var referencia = "Eventos/"+evento.deporte+"/";
 	var pkEvento = JsonToPkEvento(evento);
 	referencia = referencia+pkEvento+"/informacion";
 	var machete = 0;
 	yaSeValido = false;
+
 	//Esta linea es equivalente a decir result = el json de la referencia dada
 	//todo lo que sigue que dependa del json referencia debe de estar dentro de
 	//la funcion callback
 	usarJsonReferencia(referencia, function(value, result){
+//Eventos/Judo/ninja@ni com 11 02 2017 1 50/informacion
+
 		if(parseInt(result.cuposTotales) > parseInt(result.cuposLlenos)){
+			
 			var newEvento = result;
+
 			usarValidacionRelacionEvento(pkUsuario, newEvento, function(value, result){
 				if(result == true){
 					//modifica cupos llenos del evento.

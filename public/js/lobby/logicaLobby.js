@@ -219,7 +219,7 @@ function main(){
 	}	
 }
 
-main();
+mainDeporte("Taekwondo");
 
 
 

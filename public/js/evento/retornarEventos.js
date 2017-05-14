@@ -66,9 +66,6 @@ function pruebaretornarEventos(nameDeporte,callback){
     return todosLosEventosDelDeporte;
 }
 
-var r=pruebaretornarEventos("rugby");
-console.log(r);
-
 
 
 
