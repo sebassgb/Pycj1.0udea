@@ -32,19 +32,9 @@ function retornarEventos(nameDeporte){
         
     });
 
-
-
-
-
-
     //console.log(todosLosEventosDelDeporte);
     return todosLosEventosDelDeporte;
 }
-
-
-
-
-
 
 
 
