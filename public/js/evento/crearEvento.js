@@ -57,5 +57,3 @@ function crearEventoBasico(creador,eventoo) {
 function selectDeporte(texto){
 	document.getElementById("deporEvento").value = texto;
 }
-
-
