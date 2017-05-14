@@ -6,13 +6,13 @@
 
 */
 
-var reevento="Eventos/Judo/a@a com 11 02 2017 1 50/";
+/*var reevento="Eventos/Judo/a@a com 11 02 2017 1 50/";
 var js;
 usarJsonReferencia(reevento,function(value,result){
 	js=result;
 	salirDelEvento("hp@hp com",js);
 
-});
+});*/
 
 var bpartipante=false;
 
@@ -24,10 +24,6 @@ function salirDelEvento(pkusuario,evento) {
 	if(bpartipante){// siginifica que no encontro el participante
 		quitarEventoDeListaEventosSuscritos(pkusuario,evento);
 	}
-
-
-
-
 }
 
 function eliminarPkusuarioListaParticipantes(pkUsuarioELiminar,evento){
@@ -57,7 +53,6 @@ function eliminarPkusuarioListaParticipantes(pkUsuarioELiminar,evento){
 }
 
 
-
 function quitarEventoDeListaEventosSuscritos(pkUsuario,evento){
 	var referenciaevento="usuarios/"+pkUsuario+"/"+"eventosAsistencia/"+evento.deporte;
 	usarJsonReferencia2(referenciaevento,function(value,result,firebaseKey){
@@ -85,6 +80,7 @@ function quitarEventoDeListaEventosSuscritos(pkUsuario,evento){
 
 
 }
+
 
 function usarJsonReferencia2(refStr, callback,firebaseKey){
     var referencia = database.ref(refStr);
