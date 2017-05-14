@@ -47,8 +47,11 @@ function crearEventoBasico(creador,eventoo) {
 
 			var referenciaMiseventos="usuarios/"+creador+"/"+"eventosAsistencia"+"/"; // creo la referencia
 			database.ref(referenciaMiseventos).push(eventocreado); // ingreso la pk de los eventos
-	}
+
+		}
 	});	
+
+
 }
 
 function selectDeporte(texto){
