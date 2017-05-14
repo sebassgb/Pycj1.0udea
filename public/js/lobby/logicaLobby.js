@@ -37,6 +37,7 @@ var divEventoCompleto = document.getElementById("divVistaEventoNoRelacionado");/
 divLobby.removeChild(divEventoCompleto);//borrar la plantilla
 divEventoCompleto.style.visibility = "visible";//Hecho para que los eventos a incertar se vean y las plantillas inicialmente no
 
+var clickDiv;
 
 
 
@@ -52,13 +53,8 @@ function agregarAlInicioEvento(infoEvento){
 	newEvento.getElementsByClassName("labelId")[0].innerHTML = eventos.length;
 	newEvento.onclick = function(){
 		var posVector = newEvento.getElementsByClassName("labelId")[0].innerHTML;
-		var jsonEvento = eventos[posVector]
-		var divCompleto = llenarInfoCompleta(jsonEvento, divEventoCompleto.cloneNode(true));
-		divLobby.appendChild(divCompleto);
-		activarSeccionesInvisibles();
-
-		var j = document.getElementById("btAbe");//Evento Cerrar Por el momento
-		j.onclick = xya;
+		llenarInfoCompleta(posVector, divEventoCompleto.cloneNode(true));
+		clickDiv = newEvento;
 	}
 	eventos[eventos.length] = infoEvento;
 }
@@ -70,13 +66,8 @@ function agregarAlFinalEvento(infoEvento){
 	newEvento.getElementsByClassName("labelId")[0].innerHTML = eventos.length;
 	newEvento.onclick = function(){
 		var posVector = newEvento.getElementsByClassName("labelId")[0].innerHTML;
-		var jsonEvento = eventos[posVector]
-		var divCompleto = llenarInfoCompleta(jsonEvento, divEventoCompleto.cloneNode(true));
-		divLobby.appendChild(divCompleto);
-		activarSeccionesInvisibles();
-
-		var j = document.getElementById("btAbe");//Evento Cerrar Por el momento
-		j.onclick = xya;
+		llenarInfoCompleta(posVector, divEventoCompleto.cloneNode(true));
+		clickDiv = newEvento;
 	}
 	eventos[eventos.length] = infoEvento;
 }
@@ -106,10 +97,12 @@ function llenarInfoBase(xJson, elemento){
 	return elemento;
 }
 
-function llenarInfoCompleta(xJson, elemento){
+function llenarInfoCompleta(posVector, elemento){
+	var xJson = eventos[posVector]
 	var res = llenarInfoBase(xJson, elemento);
 	res.getElementsByClassName("resRestriccion")[0].innerHTML = xJson.genero;
 	res.getElementsByClassName("resRestriccion")[1].innerHTML = xJson.edadMinima+" - "+xJson.edadMaxima;
+	divLobby.appendChild(res);
 	if (xJson.relacion == "Admin") {
 		res.getElementsByClassName("btOpcionesEventos")[1].style.display = "inline";
 		res.getElementsByClassName("btOpcionesEventos")[2].style.display = "inline";
@@ -119,9 +112,34 @@ function llenarInfoCompleta(xJson, elemento){
 	}
 	if (xJson.relacion == "") {
 		res.getElementsByClassName("btOpcionesEventos")[0].style.display = "inline";
+		var j = document.getElementById("btSuscribirse");//Suscribirse
+		j.onclick = function(){
+			subscribirUsuario(xJson, posVector, elemento);
+		};
 	}
 	res.getElementsByClassName("btOpcionesEventos")[4].style.display = "inline";
-	return res;
+	activarSeccionesInvisibles();
+
+
+	var j = document.getElementById("btAbe");//Evento Cerrar Por el momento
+	j.onclick = funcionCerrarEvento;
+}
+
+function subscribirUsuario(evento, posVector, elemento){
+	//var pkUsuario = retornarUsuarioConcurrente();
+	var pkUsuario = "porque@nose com";
+	suscribirUsuarioEvento(pkUsuario, evento, function(value, result){
+		if(result == false){
+			//Mensaje de error
+			return;
+		}
+		//Mensaje de exito
+		eventos[posVector].cuposLlenos = parseInt(eventos[posVector].cuposLlenos)+1;
+		elemento.getElementsByClassName("respuestanombreInfo")[1].innerHTML = eventos[posVector].cuposLlenos+"/"+eventos[posVector].cuposTotales;
+		clickDiv.getElementsByClassName("respuestanombreInfo")[1].innerHTML = eventos[posVector].cuposLlenos+"/"+eventos[posVector].cuposTotales;
+		xya();
+	});
+
 }
 
 function copyJSON(x){

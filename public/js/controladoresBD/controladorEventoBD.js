@@ -1,34 +1,59 @@
 //var refe = database.ref('Eventos/futbol/ninja@ni com 11 05 2017 1 35/informacion/participante');
-
+var machete = 0;
 function usarValidacionRelacionEvento(pkUsuario, evento, callback){
-
+	
+	callback(0, true);
 }
 
-function suscribirUsuarioEvento(pkUsuario, evento){
+function suscribirUsuarioEvento(pkUsuario, evento, callback){
 	var referencia = "Eventos/"+evento.deporte+"/";
 	var pkEvento = JsonToPkEvento(evento);
 	referencia = referencia+pkEvento+"/informacion";
-
+	machete = 0;
 	//Esta linea es equivalente a decir result = el json de la referencia dada
 	//todo lo que sigue que dependa del json referencia debe de estar dentro de
 	//la funcion callback
 	usarJsonReferencia(referencia, function(value, result){
-		if(result.cuposTotales > result.cuposLlenos){
+		if(parseInt(result.cuposTotales) > parseInt(result.cuposLlenos)){
 			var newEvento = result;
 			usarValidacionRelacionEvento(pkUsuario, newEvento, function(value, result){
 				if(result == true){
 					//modifica cupos llenos del evento.
-					var newsCupos = parseInt(newEvento.cuposLlenos)+1;
-					pushReferencia(referencia, {cuposLlenos : newsCupos.toString()});
+					if(machete == 0){
+						machete = 1;
+						var newsCupos = parseInt(newEvento.cuposLlenos)+1;
+						//alert("cupos");
+						updateReferencia(referencia, {cuposLlenos : newsCupos.toString()});
+					}
 					//ingresa la pk del usuario a la  lista de participantes del evento.
-					referencia = referencia+"/participante";
-					pushReferencia(referencia, {pkUsuario : pkUsuario});
+					if(machete == 1){
+						machete = 2;
+						var auxReferencia = referencia+"/participante";
+						//alert("participante");
+						pushReferencia(auxReferencia, {pkUsuario : pkUsuario})
+					}
 					//ingresa pk del evento a la lista de  eventos asistencia.
-					var refEvSuscritosUser = "usuarios/"+pkUsuario+"/eventosAsistencia/"+newEvento.deporte
-					pushReferencia(refEvSuscritosUser, {pkEvento: pkEvento});
-
+					if(machete == 2){
+						machete = 3;
+						var refEvSuscritosUser = "usuarios/"+pkUsuario+"/eventosAsistencia/"+newEvento.deporte
+						//alert("asistencia");
+						pushReferencia(refEvSuscritosUser, {pkEvento: pkEvento});
+					}
+					if (machete == 3) {
+						machete = -1;
+						//alert("salir");
+						callback(0, true);
+					}		
+					if(machete == -1){
+						//alert("termina");
+						return;
+					}
+				}else{
+					callback(0, false);
 				}
 			});
+		}else{
+			callback(0, false);
 		}
 	});
 }
