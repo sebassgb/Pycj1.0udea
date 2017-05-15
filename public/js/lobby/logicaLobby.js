@@ -180,11 +180,11 @@ function activarSeccionesInvisibles(){
 
 
 function mainLobby(){
-	var eventosIniciales = retornarEventos("Judo");
-	setTimeout(function (){
-		var arrEventoOrdenado = ordenarEventoFecha(eventosIniciales);
-		addListaEventoAlFinal(arrEventoOrdenado);
-	}, 2500);
+	usarDeportesFavoritos(function(value, result){
+		console.log(result);
+		/*var arrEventoOrdenado = ordenarEventoFecha(eventosIniciales);
+		addListaEventoAlFinal(arrEventoOrdenado);*/
+	});
 }
 
 function mainDeporte(xdeporte){

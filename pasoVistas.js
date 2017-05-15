@@ -50,3 +50,8 @@ app.get('/creacionEvento', function (req, res) {
    // Prepare output in JSON format
    res.sendFile( __dirname + "/public/html/barraInferior/evento/" + "creaEvento.html" ); 
 });
+
+app.get('/modificacionEvento', function (req, res) {
+   // Prepare output in JSON format
+   res.sendFile( __dirname + "/public/html/barraInferior/evento/" + "creaEvento.html" ); 
+});

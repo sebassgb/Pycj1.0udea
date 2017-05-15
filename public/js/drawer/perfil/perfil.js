@@ -1,5 +1,5 @@
 // Initialize Firebase
-  var config = {
+  /*var config = {
     apiKey: "AIzaSyAS7jZPxJGfMUz_HWPyOWHabLwLNcY8nqE",
     authDomain: "cotejo-4e99d.firebaseapp.com",
     databaseURL: "https://cotejo-4e99d.firebaseio.com",
@@ -7,7 +7,7 @@
     messagingSenderId: "921281214360"
   };
 
-firebase.initializeApp(config);  // objeto para aceder a la bd
+firebase.initializeApp(config);*/  // objeto para aceder a la bd
 llenarInfo();//Carga datos iniciales
  var username;
  var genero;
@@ -18,7 +18,7 @@ llenarInfo();//Carga datos iniciales
  var controlDeporte=true, controlRepetido=true;//Auxuliares para repetidos
  var nuevoLi;
  var posicionRepetido;//Almacena posición del vector del elemento repetido
-
+ //var newsSports = 
 
 function add_li(texto)//Recuperamos el texto del elemento a
 {
@@ -30,7 +30,10 @@ function add_li(texto)//Recuperamos el texto del elemento a
         {
           var li=document.createElement('li');
           li.id=nuevoLi;
-          li.innerHTML='<div id="'+nuevoLi+'"onclick="eliminar(this)"><img src="../../src/'+nuevoLi+'.png"></div>';
+          console.log(nuevoLi);
+          //if(nuevoLi != "undefined"){
+            li.innerHTML='<div id="'+nuevoLi+'"onclick="eliminar(this)"><img src="../../src/'+nuevoLi+'.png"></div>';
+          //}
           if(control<=5)document.getElementById("addSports").appendChild(li);
             control=control+1;//Aumentamos numero de deportes que lleva el usuario
             controlRepetido=false;
@@ -109,6 +112,9 @@ retornarUsuarioConcurrente(function(value,result){
        document.getElementsByClassName("nombrePerfil")[0].innerHTML = datos.nombre;
        document.getElementsByClassName("generoPerfil")[0].innerHTML = datos.genero;
        document.getElementsByClassName("edadPerfil")[0].innerHTML = datos.edad;
+       if(typeof(datos.deportesFavoritos) == "string"){
+          return;
+       }
         if(datos.deportesFavoritos.deporte1!=="vacio"){add_mys(datos.deportesFavoritos.deporte1);}
         if(datos.deportesFavoritos.deporte2!=="vacio"){add_mys(datos.deportesFavoritos.deporte2);}
         if(datos.deportesFavoritos.deporte3!=="vacio"){add_mys(datos.deportesFavoritos.deporte3);}
@@ -135,30 +141,7 @@ retornarUsuarioConcurrente(function(value,result){
     var referencia = "usuarios/"+result;//Buscamos la referencia
     var bdEventos=database.ref(referencia).update(favoritos);//Actualizamos la BD con los deportes favoritos
 });
-}
-
- function retornarDeportesFavoritos(){//Retorna un vector con los deportes favoritos
- var listaFavsDefinitiva=[];//Vector que retorna favoritos
-retornarUsuarioConcurrente(function(value,result){
-var referencia = "usuarios/"+result+"/"+"deportesFavoritos";
-
-var bdEventos=database.ref(referencia);
-  bdEventos.on('value',function(datos){
-        //la primera funcion recorremos la lista de usuarios
-        var datos =  datos.val();// obtenemos los valores raices del nodo usuarios
-
-        $.each(datos,function(indice,valor)//Recorremos todos los datos que tenemos
-        {
-            var valores=valor;
-            if(valores!=="vacio"){//Si no esta vacío se lo mandamos al vector
-              listaFavsDefinitiva.push(valor);
-            }
-        });
-    },function(objetoError){
-        //alert("error en la lectura "+objetoError.code);
-    });
-  return listaFavsDefinitiva;
-});
+//document.getElementById("addSports").style.display = "none";
 }
 
 function find_mys(contenido)//Recuperamos deportes favoritos

@@ -99,13 +99,16 @@
     <center><!--Aquí añadiremos los deportesl del usuario-->
 			<ul id="addSports">
 			</ul>
+      <center>
+      <a href="http://localhost:8080/perfil">
+      <button type="button" class="btn btn-default" onclick="guardarPerfil();">Nuevos deportes Favoritos</button>
+      </a>
+    </center>
 			<ul id="mySports">
 				<center><label style="color:white;">Mis Deportes Favoritos</label></center>
 			</ul>
     </center>
-		<center>
-			<button type="button" class="btn btn-default" onclick="guardarPerfil();">Guardar</button>
-		</center>
+		
 
 <!--BARRA INFERIOR-->
 <footer style="margin-top:12%;">
@@ -128,6 +131,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/configuracionFirebase.js"></script>
     <script src="../../js/menu.js"></script>
     <script src="../../js/controladoresBD/controladorUsuarioBD.js";></script>
 		<script src="../../js/drawer/perfil/perfil.js"></script>

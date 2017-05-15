@@ -41,5 +41,31 @@ function colocarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de
 }
 
 
-
-
+function usarDeportesFavoritos(callback){//Retorna un vector con los deportes favoritos
+ var listaFavsDefinitiva=[];//Vector que retorna favoritos
+console.log("paso");
+retornarUsuarioConcurrente(function(value,result){
+var referencia = "usuarios/"+result+"/"+"deportesFavoritos";
+console.log(referencia);
+var bdEventos=database.ref(referencia);
+  bdEventos.on('value',function(datos){
+        //la primera funcion recorremos la lista de usuarios
+        var datos =  datos.val();// obtenemos los valores raices del nodo usuarios
+        if(typeof(datos) == "string"){
+          console.log(datos);
+          callback(0, listaFavsDefinitiva);
+          return;
+        }
+        $.each(datos,function(indice,valor)//Recorremos todos los datos que tenemos
+        {
+            var valores=valor;
+            if(valores!=="vacio"){//Si no esta vacío se lo mandamos al vector
+              listaFavsDefinitiva.push(valor);
+            }
+        });
+        callback(0, listaFavsDefinitiva);
+    },function(objetoError){
+        //alert("error en la lectura "+objetoError.code);
+    });
+});
+}
