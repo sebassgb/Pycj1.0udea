@@ -14,7 +14,6 @@ llenarInfo();//Carga datos iniciales
  var edad;
  var database = firebase.database(); // objeto para hacer uso de la bd
  var listaFavoritos=["vacio","vacio","vacio","vacio","vacio"];
- var listaFavsDefinitiva=[];//Vector que se manda como parametro
  var control=0;//Control que limita numero de deportes escogidos
  var controlDeporte=true, controlRepetido=true;//Auxuliares para repetidos
  var nuevoLi;
@@ -139,6 +138,7 @@ retornarUsuarioConcurrente(function(value,result){
 }
 
  function retornarDeportesFavoritos(){//Retorna un vector con los deportes favoritos
+ var listaFavsDefinitiva=[];//Vector que retorna favoritos
 retornarUsuarioConcurrente(function(value,result){
 var referencia = "usuarios/"+result+"/"+"deportesFavoritos";
 
