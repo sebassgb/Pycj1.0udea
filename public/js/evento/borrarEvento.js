@@ -29,6 +29,7 @@ function borrarEvento(evento) {
 	eliminarPkEventoListaEventosSuscritosParticipantes(evento,pkparticipantesViejos);
 	//retorna vector con los pk de los participantes que estaban en el evento
 	var rutaeventoEliminar="Eventos/"+evento.deporte+"/"+pkEvento;
+	console.log(rutaeventoEliminar);
 	eliminarEventoBDEventos(rutaeventoEliminar);
 
 
@@ -51,7 +52,6 @@ function eliminarPkEventoListaEventosSuscritosParticipantes(evento,participantes
 
 function eliminarEventoBDEventos(rutaEvento) {
 	database.ref(rutaEvento).remove();
-	
 }
 
 function usarJsonReferencia(refStr, callback){

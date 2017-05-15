@@ -228,9 +228,23 @@ function activarSeccionesInvisibles(){
 
 function mainLobby(){
 	usarDeportesFavoritos(function(value, result){
-		console.log(result);
-		/*var arrEventoOrdenado = ordenarEventoFecha(eventosIniciales);
-		addListaEventoAlFinal(arrEventoOrdenado);*/
+		if(result.length == 0){
+			return;
+		}
+		for (j in result) {
+			console.log(result[j]);
+			var depVec = result[j].split("%20");
+			var dep = depVec[0];
+			for (var i = 1; i<depVec.length;i++) {
+				dep = dep+" "+depVec[i];
+			}
+			retornaEventos(dep,function(value,result){
+		    for(l in result){
+		        agregarAlFinalEvento(result[l]);; // la informacion que se desee
+		    }
+			});
+		}
+
 	});
 }
 //asdsa
@@ -261,7 +275,9 @@ function mainMisEventos(){
 				var pkEvento = result[deporte][pkFire].pkEvento;
 				var refEvento = "Eventos/"+deporte+"/"+pkEvento;
 				usarJsonReferencia(refEvento, function(value, result){
-					agregarAlFinalEvento(result.informacion);
+					if(result != null){
+						agregarAlFinalEvento(result.informacion);
+					}
 				});
 			}
 		}
