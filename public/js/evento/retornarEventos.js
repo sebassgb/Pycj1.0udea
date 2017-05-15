@@ -1,7 +1,3 @@
-var btn = document.getElementById("btnprueba");
-var deportee="futbol";
-
-
 // funcion del deporte
 
 function retornarEventos(nameDeporte){

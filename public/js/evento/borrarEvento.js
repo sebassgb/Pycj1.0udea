@@ -9,8 +9,6 @@ usarJsonReferencia(reevento,function(value,result){
 });
 */
 
-
-
 function borrarEvento(evento) {
 		
 	// obtengo las lista de las pk de los participantes para ir donde ellos y eliminar el evento de su lista de suscritos
