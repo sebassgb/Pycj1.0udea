@@ -1,4 +1,4 @@
-#perfil, #addSports{
+#perfil, #addSports, #mySports{
   background: #1B8A59;
   font-family: 'Bree Serif', serif;
 }
@@ -52,7 +52,7 @@ a.dropdown-toggle {
     display: block;
 }
 
-#addSports img{
+#addSports img, #mySports img{
   width: 30%;
   height: auto;
 }
