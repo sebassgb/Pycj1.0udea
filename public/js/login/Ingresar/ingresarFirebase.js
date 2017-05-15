@@ -63,8 +63,8 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   var usr= {
             nombre : user.displayName,
             correo : user.email,
-            genero: user.gender,
-            edad : user.age,
+            genero: "undefined",
+            edad : "undefined",
             pass: "undefined",
             foto: user.photoURL,
             deportesFavoritos:{
@@ -151,6 +151,5 @@ function colocarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de
 
   function pausa(){//TimeOut para detener callbacks unos segundos
   setTimeout(function (){
-    console.log("holi");
   }, 2500);
 }
