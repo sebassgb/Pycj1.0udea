@@ -1,23 +1,3 @@
-
-var json = {//Formato del Json Evento, para hacer pruebas
-	"creador": "pkUsuario",
-    "nombre": "Cebollitas Cracks",
-    "edadMinima": "5",
-    "edadMaxima": "20",
-    "deporte": "Futbol",
-    "cuposTotales": "20",
-    "cuposLlenos": "10", // incialmente ya que solo el que creo el eveo esta inscrito en el
-    "genero": "Genero",
-    "notas": "notas",      
-    "lugar": "lugar",
-    "dia": "02",
-    "mes": "04",
-    "year": "2017",      
-    "hora": "01",
-    "minuto": "30",      
-    }
-
-
 var nomEvento;
 var deporEvento;
 var numPersonas;
@@ -27,26 +7,45 @@ var year;
 var hora;
 var minuto;
 var lugar;
-
-var Genero;
+var creador;
+var cuposLlenos;
+var genero;
 var edadMin;
 var edadMax;
 var notas;
+var participantes;
 
 var campoEdadMin;
 var campoEdadMax;
 var campoNPersonas;
 
+var PK;
+var dir;
+var validar;
+var deporteUrl;
+var pKUrl;
+var referencia;
 
-function genero(gender){
-  Genero = gender;
-}
-function setJson(jn){//Este set debe ser llamado inicialmente para enviar el json actual y poder modificarlo
-    this.json = jn;  
-    alert(jn);
-}
+var jsonModificado;
+var json;
 
+main();
+
+
+usarJsonReferencia(referencia,function(value,result){
+   json = result;
+   console.log(json);
+});
+activarModificar(json);// Esta linea inicia todo este codigo
+    
 function colocarDatos(){// Este metodo ubica los valores del json en el formulario
+
+    deporEvento = json.deporte;
+    creador = json.creador;
+    cuposLlenos = json.cuposLlenos;
+    genero = json.genero;
+    notas = json.notas;
+    participantes = json.participantes;
     document.getElementById("nomEvento").value = json.nombre;
     document.getElementById("deporEvento").value = json.deporte;
     document.getElementById("numPersonas").value = json.cuposTotales;
@@ -58,7 +57,7 @@ function colocarDatos(){// Este metodo ubica los valores del json en el formular
     document.getElementById("lugar").value = json.lugar;
     document.getElementById("edadMin").value = json.edadMinima;
     document.getElementById("edadMax").value = json.edadMaxima;
-    //document.getElementById("editeNota").value = "";
+    document.getElementById("editeNota").value = json.notas;
     document.getElementById("deporEvento").disabled = true;
     document.getElementById("dia").disabled = true;
     document.getElementById("mes").disabled = true;
@@ -68,70 +67,94 @@ function colocarDatos(){// Este metodo ubica los valores del json en el formular
     
     
 }
-colocarDatos();
 function validarDatos(){//Esta funcion captura los datos que edito y valida que no pasen los limites
   
     nomEvento =  document.getElementById("nomEvento").value;
-    deporEvento =  document.getElementById("deporEvento").value;
     numPersonas =  document.getElementById("numPersonas").value;
-    dia=  document.getElementById("dia").value;
-    mes=  document.getElementById("mes").value;
-    year=  document.getElementById("year").value;
-    hora =  document.getElementById("hora").value;
-    minuto=  document.getElementById("minuto").value;
-    lugar=  document.getElementById("lugar").value;
-    edadMin =  document.getElementById("edadMin").value;
-    edadMax =  document.getElementById("edadMax").value;
-    notas =  document.getElementById("editeNota").value;
+    dia = document.getElementById("dia").value;
+    mes = document.getElementById("mes").value;
+    year = document.getElementById("year").value;
+    hora = document.getElementById("hora").value;
+    minuto = document.getElementById("minuto").value;
+    lugar = document.getElementById("lugar").value;
+    edadMin = document.getElementById("edadMin").value;
+    edadMax = document.getElementById("edadMax").value;
+    notas = document.getElementById("editeNota").value;
     
     campoEdadMax = json.edadMaxima;
-    if(edadMax<campoEdadMax){
+    if(edadMax < campoEdadMax){
         alert("No se puede disminuir la edad maxima");
         document.getElementById("edadMax").value = json.edadMaxima;
+        edadMax = campoEdadMax;
         return false;
     }
     campoEdadMin = json.edadMinima;
-    if(edadMin>campoEdadMin){
+    console.log(campoEdadMin);
+    if(edadMin > campoEdadMin){
         document.getElementById("edadMin").value = json.edadMinima;
-        alert("No se puede aumentar la edad minima");
-        
-        
+        alert("No se puede aumentar la edad minima");           
+        edadMin = campoEdadMin;
         return false;
     }
     
     campoNPersonas = json.cuposLlenos;
-    if(numPersonas<campoNPersonas){
+    if(numPersonas < campoNPersonas){
         alert("No se puede disminuir el numero de personas");
         document.getElementById("numPersonas").value = json.cuposTotales;
+        numPersonas = campoNPersonas;
         return false;
     }
-    return true;
+    else{
+        return true;
+    }
 }
 
-var jsonModificado = { // crea un json con los valores editados para luego sobreescribirlo y enviarlo
-    "nombre": nomEvento,
-    "edadMinima": nomEvento,
-    "edadMaxima": edadMax,
-    "deporte": deporEvento,
-    "cuposTotales": numPersonas,     
-    "lugar": lugar,
-    "dia": dia,
-    "mes": mes,
-    "year": year,      
-    "hora": hora,
-    "minuto": minuto, 
+    
+function activarModificar(jn){//Este set debe ser llamado inicialmente para enviar el json actual y poder modificarlo, activa los demas metodos
+    this.json = jn;  
+    colocarDatos();
 }
-
-json = jsonModificado;
-
-var PK = json.creador+" "+json.dia+" "+json.mes+" "+json.year+" "+json.hora+" "+json.minuto;
-var dir = 'Eventos/'+deporEvento+"/"+PK+'/informacion';
-
-function actualizar(){ // valida los datos si estan bien actualiza y si no envia un mensaje
-    var validar = validarDatos();
+    
+function actualizarParaLeerDatos(){
+    validar = validarDatos();
+    jsonModificado = { // crea un json con los valores editados para luego sobreescribirlo y enviarlo
+               
+          "creador" : creador,
+          "cuposLlenos" : cuposLlenos,
+          "cuposTotales" : numPersonas,
+          "deporte" : deporEvento,
+          "dia" : dia,
+          "edadMaxima" : edadMax,
+          "edadMinima" : edadMin,
+          "genero" : genero,
+          "hora" : hora,
+          "lugar" : lugar,
+          "mes" : mes,
+          "minuto" : minuto,
+          "nombre" : nomEvento,
+          "notas" : notas,
+          "participantes" : participantes,
+          "year" : year
+    }
+    console.log(edadMin);
+    
+    json = jsonModificado;
+    console.log(json);
+    
+    console.log(json.creador);
+    PK = json.creador+" "+json.dia+" "+json.mes+" "+json.year+" "+json.hora+" "+json.minuto;
+    console.log(PK);
+    dir = 'Eventos/'+deporEvento+"/"+PK+'/informacion';
+    console.log(dir);
+    
+    actualizar(dir,json);
+}
+    
+function actualizar(dir,json){ // valida los datos si estan bien actualiza y si no envia un mensaje
     
     if(validar == true){
-        updateReferencia(dir,json);
+        //console.log(dir +"                                 "+this.json);
+        updateReferencia(dir,this.json);
     }else{
         alert("No se puedo completar la actalización de datos");
         return;
@@ -139,8 +162,32 @@ function actualizar(){ // valida los datos si estan bien actualiza y si no envia
 
 }
 
+function usarJsonReferencia(refStr, callback){
+	var referencia = database.ref(refStr);
+	referencia.on('value', function(snapshot) {//Funcion asincrona
+		callback(0, snapshot.val());//Se ejecuta callback para usar la referencia cuando se tenga
+	});
+}
+
+function main(){
+	/*var URLactual = window.location.toString();
+	var entradaVec = URLactual.split("/");
+	deporteUrl = entradaVec[entradaVec.length-1];
+    pKUrl = entradaVec[entradaVec.length-2];
+    pKUrl = convertir(pKUrl);*/
+    deporteUrl = "Atletismo";
+    pKUrl = "a@a%20com%2001%2002%202017%206%2024";
+    pKUrl = convertir(pKUrl);
+    referencia = "Eventos/"+deporteUrl+"/"+pKUrl+"/informacion";
+    console.log(pKUrl);
+}
 
 
- 
-
+var url = "http//:localhost:8080/Atletismo/a@a%20com%2001%2002%202017%206%2024"
+function convertir(url){
+    var aCambiar = /%20/g;
+    var cambio = " ";
+    var nuevoString = url.replace(aCambiar,cambio);
+    return nuevoString;
+}
 
