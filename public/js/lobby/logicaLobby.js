@@ -23,7 +23,7 @@ var json = {//Formato del Json Evento, para hacer pruebas
 }
 
 ///
-var pkUsuario = "a@a com";
+var pkUsuario = "ninja@ni com";
 ///
 
 var eventos = [];//Guarda los eventos que se ven en pantalla
@@ -116,9 +116,20 @@ function llenarInfoCompleta(posVector, elemento){
 	if (xJson.relacion == "Admin") {
 		res.getElementsByClassName("btOpcionesEventos")[1].style.display = "inline";
 		res.getElementsByClassName("btOpcionesEventos")[2].style.display = "inline";
+		var l = document.getElementById("refEditarEvento");
+		l.href = "http://localhost:8080/modificacionEvento/"+xJson.deporte+"/"+JsonToPkEvento(xJson);
+		var j = document.getElementById("btBorrarEvento");//Borrar evento
+		j.onclick = function(){
+			console.log(eventos[posVector]);
+			borrarEventoV(xJson, posVector, elemento);
+		};
 	}
 	if (xJson.relacion == "Suscrito") {
 		res.getElementsByClassName("btOpcionesEventos")[3].style.display = "inline";
+		var j = document.getElementById("btSalirEvento");//Suscribirse
+		j.onclick = function(){
+			salirEvento(xJson, posVector, elemento);
+		};
 	}
 	if (xJson.relacion == "") {
 		res.getElementsByClassName("btOpcionesEventos")[0].style.display = "inline";
@@ -135,7 +146,20 @@ function llenarInfoCompleta(posVector, elemento){
 	j.onclick = funcionCerrarEvento;
 }
 
-function subscribirUsuario(evento, posVector, elemento){
+function borrarEventoV(evento, posVector, divCompleto){
+	//var pkUsuario = retornarUsuarioConcurrente();
+	console.log(eventos[posVector]+"  "+pkUsuario);
+	borrarEvento(eventos[posVector]);
+	alert("funciono");
+}
+
+function salirEvento(evento, posVector, divCompleto){
+	//var pkUsuario = retornarUsuarioConcurrente();
+	console.log(eventos[posVector]+"  "+pkUsuario)
+	salirDelEvento(pkUsuario,eventos[posVector]);
+}
+
+function subscribirUsuario(evento, posVector, divCompleto){
 	//var pkUsuario = retornarUsuarioConcurrente();
 	suscribirUsuarioEvento(pkUsuario, evento, function(value, result){
 		if(result == false){
@@ -146,7 +170,7 @@ function subscribirUsuario(evento, posVector, elemento){
 		//Mensaje de exito
 		console.log("LO REGISTRO");
 		eventos[posVector].cuposLlenos = parseInt(eventos[posVector].cuposLlenos)+1;
-		elemento.getElementsByClassName("respuestanombreInfo")[1].innerHTML = eventos[posVector].cuposLlenos+"/"+eventos[posVector].cuposTotales;
+		divCompleto.getElementsByClassName("respuestanombreInfo")[1].innerHTML = eventos[posVector].cuposLlenos+"/"+eventos[posVector].cuposTotales;
 		clickDiv.getElementsByClassName("respuestanombreInfo")[1].innerHTML = eventos[posVector].cuposLlenos+"/"+eventos[posVector].cuposTotales;
 		xya();
 	});
@@ -239,8 +263,6 @@ function main(){
 }
 
 main();
-
-
 
 
 

@@ -51,7 +51,9 @@ app.get('/creacionEvento', function (req, res) {
    res.sendFile( __dirname + "/public/html/barraInferior/evento/" + "creaEvento.html" ); 
 });
 
-app.get('/modificacionEvento', function (req, res) {
+app.get('/modificacionEvento/:deporte/:pkEvento', function (req, res) {
    // Prepare output in JSON format
+   console.log(req.params.pkEvento);
+   console.log(req.params.deporte);
    res.sendFile( __dirname + "/public/html/barraInferior/evento/" + "creaEvento.html" ); 
 });

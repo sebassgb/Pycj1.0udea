@@ -5,11 +5,8 @@ usarJsonReferencia(reevento,function(value,result){
 	js=result;
 	var t=borrarEvento(js);
 	//console.log(t);
-
 });
 */
-
-
 
 function borrarEvento(evento) {
 		
@@ -64,8 +61,6 @@ function usarJsonReferencia(refStr, callback){
         callback(0, snapshot.val());//Se ejecuta callback para usar la referencia cuando se tenga
     });
 }
-
-
 
 
 
