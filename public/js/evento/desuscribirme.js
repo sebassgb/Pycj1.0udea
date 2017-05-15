@@ -5,12 +5,12 @@
 *actualizar html actual
 
 */
-
-/*var reevento="Eventos/Judo/a@a com 11 02 2017 1 50/";
+ /*
+var reevento="Eventos/Judo/a@a com 11 02 2017 1 50/";
 var js;
 usarJsonReferencia(reevento,function(value,result){
 	js=result;
-	salirDelEvento("hp@hp com",js);
+	salirDelEvento("pepito@pp com",js);
 
 });*/
 
@@ -30,6 +30,19 @@ function eliminarPkusuarioListaParticipantes(pkUsuarioELiminar,evento){
 
 	var participantesviejos=evento.participantes; // almaceno los participantes antiguos en un vector
 	var pkfirebase=[];
+
+	// restamos los cupos llenos al evento
+	var cupos=parseInt(evento.cuposLlenos);
+	cupos=cupos-1;
+
+	var eventoCupso={
+		cuposLlenos:cupos
+	}
+
+	// actualizamos el evento
+	var referenciaEventoActualizado="Eventos/"+evento.deporte+"/"+JsonToPkEvento(evento)+"/informacion/";
+	database.ref(referenciaEventoActualizado).update(eventoCupso);
+
 
 	var pkparticipantesViejos=[]; // creo un vector con la pk de los participantes del evento
 	for(i in participantesviejos){		

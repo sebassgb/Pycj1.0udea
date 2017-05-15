@@ -1,7 +1,3 @@
-var btn = document.getElementById("btnprueba");
-var deportee="futbol";
-
-
 // funcion del deporte
 
 function retornarEventos(nameDeporte){
@@ -39,34 +35,75 @@ function retornarEventos(nameDeporte){
 
 
 
-
-function pruebaretornarEventos(nameDeporte,callback){
-
-    var todosLosEventosDelDeporte=[];
-
-    var bdEventos="Eventos/"+nameDeporte; // referencia a la base de datos
-
-    usarJsonReferencia(bdEventos,function(value,result){
-        // 3. activamos la referencia a la base de datos para trabajar con ella, con 2 funciones , una que se ejecuta consatantemente si todo fluye correctamente entre la referencia y firebase y otra que se ejecuta en caso de presentarse errores con fire base, el parametro "value" mantiene en constante comunicacion la la bd de fire
-        //la primera funcion recorremos la lista de usuarios
-         // funcion de jquery que sirve para recorrer vectores es lo mismo que un for o while
-        // recibe dos paramentros el array y la funcion a ejecutar con el array
-        var i=0;
-        $.each(result,function(indice,valor)
-        {
-            var valores=valor.informacion;
-            todosLosEventosDelDeporte[i]=valor.informacion;   
-            i++;
-        });
-        // funciona de error  
-
+function usarJsonReferencia(refStr, callback){
+    var referencia = database.ref(refStr);
+    referencia.on('value', function(snapshot) {//Funcion asincrona
+        callback(0, snapshot.val());//Se ejecuta callback para usar la referencia cuando se tenga
     });
-
-    //console.log(todosLosEventosDelDeporte);
-    return todosLosEventosDelDeporte;
 }
 
 
+//************************prueba de manera no asisncrona**********************************************************
+
+
+
+
+/*pruebaretornarEventos("Buceo Pulmon Libre",function(value,result){
+
+    for (k in result){
+            console.log(result[k].informacion);
+    }
+
+
+
+});*/
+
+
+//*********************
+/*var refe="Eventos/"+"Buceo Pulmon Libre/";
+usarJsonReferencia(refe, function(value,result){
+    for(i in result){
+        console.log(result[i].informacion.creador);
+    }
+
+
+})*/
+
+
+
+function retornaEventos(deporte,callback){
+
+    var refe="Eventos/"+deporte+"/";
+    usarJsonReferencia(refe, function(value,result){
+    var eventos=[];    
+        
+        for(i in result){
+            eventos.push(result[i].informacion);
+        }
+        callback(0,eventos);
+
+
+    });
+}
+
+
+
+/* ***** USO DE retorEvento "ASINCRONA"
+
+pruebaRetornaEventos("Buceo Pulmon Libre",function(value,result){
+    // en result se encuentra el vector con los JSON de los eventos
+    // se acede mediante un for
+    for(l in result){
+        console.log(result[l].creador); // la informacion que se desee
+    }
+
+
+
+});
+
+
+*/
+   
 
 
 function useEventosCreados(pkusuario,callback) {
@@ -82,16 +119,12 @@ function useEventosCreados(pkusuario,callback) {
         callback(0,pkMisEventos); 
 
     });
+
+
+
 }
 
 
-
-function usarJsonReferencia(refStr, callback){
-    var referencia = database.ref(refStr);
-    referencia.on('value', function(snapshot) {//Funcion asincrona
-        callback(0, snapshot.val());//Se ejecuta callback para usar la referencia cuando se tenga
-    });
-}
 
 
 

@@ -22,9 +22,6 @@ retornarUsuarioConcurrente(function(value,result){
 });
 */
 
-
-
-
 // colocar en un Js
 String.prototype.replaceAll = function(target, replacement){
   return this.split(target).join(replacement);
@@ -69,3 +66,7 @@ var bdEventos=database.ref(referencia);
     });
 });
 }
+
+
+
+
