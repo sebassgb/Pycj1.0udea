@@ -68,10 +68,10 @@ function quitarEventoDeListaEventosSuscritos(pkUsuario,evento){
 			if(event==eventoBorrar){
 				var referenciaEventoSuscritoBorrar="usuarios/"+pkUsuario+"/"+"eventosAsistencia/"+evento.deporte+"/"+fireBaseKey+"/pkEvento";
 				database.ref(referenciaEventoSuscritoBorrar).remove();
-				alert("Te has retirado del evento ti@");
+				//alert("Te has retirado del evento ti@");
 				break;
 			}else{
-				alert("Evento no se encontro en la lista de eventos suscritos");
+				//alert("Evento no se encontro en la lista de eventos suscritos");
 			}
 
 		}
