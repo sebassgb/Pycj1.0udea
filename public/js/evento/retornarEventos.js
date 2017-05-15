@@ -90,7 +90,7 @@ function retornaEventos(deporte,callback){
 
 /* ***** USO DE retorEvento "ASINCRONA"
 
-pruebaRetornaEventos("Buceo Pulmon Libre",function(value,result){
+retornaEventos("Buceo Pulmon Libre",function(value,result){
     // en result se encuentra el vector con los JSON de los eventos
     // se acede mediante un for
     for(l in result){

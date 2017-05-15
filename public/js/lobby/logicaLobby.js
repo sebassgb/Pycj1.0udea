@@ -219,13 +219,13 @@ function mainLobby(){
 		addListaEventoAlFinal(arrEventoOrdenado);*/
 	});
 }
-
+//asdsa
 function mainDeporte(xdeporte){
-	var eventosIniciales = retornarEventos(xdeporte);
-	setTimeout(function (){
-		var arrEventoOrdenado = ordenarEventoFecha(eventosIniciales);
-		addListaEventoAlFinal(arrEventoOrdenado);
-	}, 2500);
+	retornaEventos(xdeporte,function(value,result){
+	    for(l in result){
+	        agregarAlFinalEvento(result[l]);; // la informacion que se desee
+	    }
+	});
 }
 
 function mainMisEventos(){
