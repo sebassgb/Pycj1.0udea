@@ -50,13 +50,10 @@ function guardeDatos(){/*Esta función al darle click al boton guardar del html 
 
     // leemos que usuario se encuentra  logeado, el cual es el creador del evento
     var pkUsuario;
-    firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
+    retornarUsuarioConcurrente(function(value,result){
 
 
-      pkUsuario =user.email;
-      pkUsuario=quitarPuntoCorreo(pkUsuario);
-      pkUsuario = "tripo@tri com";
+      pkUsuario =result;
       var evento= {//JSON que contiene datos principales del evento
         creador:pkUsuario,
         nombre: nomEvento,
@@ -78,9 +75,6 @@ function guardeDatos(){/*Esta función al darle click al boton guardar del html 
 
       crearEventoBasico(pkUsuario,evento);
       // creamos el evento en la base de datos
-   }else {
-      alert("no hay nadie en sesion");
-   }
   });
   
 

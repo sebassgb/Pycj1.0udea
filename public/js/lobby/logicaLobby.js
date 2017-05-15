@@ -22,8 +22,13 @@ var json = {//Formato del Json Evento, para hacer pruebas
     "minuto": "minuto",      
 }
 
+
+
+
+
+
 ///
-pkUsuario = "tripo@tri com";
+//pkUsuario = "tripo@tri com";
 ///
 
 var eventos = [];//Guarda los eventos que se ven en pantalla
@@ -290,15 +295,20 @@ function main(){
 	var URLactual = window.location.toString();
 	var entradaVec = URLactual.split("/");
 	var entrada = entradaVec[entradaVec.length-1];
-	if(entrada == "lobby"){
-		mainLobby();
-	}else{
-		if(entrada == "misEventos"){
-			mainMisEventos();
+	retornarUsuarioConcurrente(function(value,result){
+		pkUsuario = result;
+		console.log(pkUsuario);
+		if(entrada == "lobby"){
+			mainLobby();
 		}else{
-			mainDeporte(entrada);
+			if(entrada == "misEventos"){
+				mainMisEventos();
+			}else{
+				mainDeporte(entrada);
+			}
 		}
-	}	
+	});
+		
 }
 
 main();
