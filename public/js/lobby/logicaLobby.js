@@ -22,6 +22,10 @@ var json = {//Formato del Json Evento, para hacer pruebas
     "minuto": "minuto",      
 }
 
+///
+var pkUsuario = "a@a com";
+///
+
 var eventos = [];//Guarda los eventos que se ven en pantalla
 
 
@@ -42,6 +46,8 @@ var clickDiv;
 
 
 function agregarAlInicioEvento(infoEvento){
+	var relacionx = identificador(infoEvento,pkUsuario);
+	infoEvento.relacion = relacionx;
 	var newEvento = llenarInfoBase(infoEvento, divEvento.cloneNode(true));
 	var referencia = document.getElementsByClassName("divInfoEvento")[0];
 	if(referencia == "undefined"){
@@ -60,6 +66,8 @@ function agregarAlInicioEvento(infoEvento){
 }
 
 function agregarAlFinalEvento(infoEvento){
+	var relacionx = identificador(infoEvento,pkUsuario);
+	infoEvento.relacion = relacionx;
 	var newEvento = llenarInfoBase(infoEvento, divEvento.cloneNode(true));
 	divLobby.appendChild(newEvento);
 
@@ -93,7 +101,8 @@ function llenarInfoBase(xJson, elemento){
 	elemento.getElementsByClassName("labelFecha")[0].innerHTML = xJson.dia+"/"+xJson.mes+"/"+xJson.year;
 	elemento.getElementsByClassName("labelHora")[0].innerHTML = xJson.hora+": "+xJson.minuto;
 	elemento.getElementsByClassName("labelLocalizacion")[0].innerHTML = xJson.lugar;
-	elemento.getElementsByClassName("labelRelacion")[0].innerHTML = "Admin";
+	elemento.getElementsByClassName("labelRelacion")[0].innerHTML = xJson.relacion;
+
 	return elemento;
 }
 
@@ -103,6 +112,7 @@ function llenarInfoCompleta(posVector, elemento){
 	res.getElementsByClassName("resRestriccion")[0].innerHTML = xJson.genero;
 	res.getElementsByClassName("resRestriccion")[1].innerHTML = xJson.edadMinima+" - "+xJson.edadMaxima;
 	divLobby.appendChild(res);
+	console.log(xJson.relacion);
 	if (xJson.relacion == "Admin") {
 		res.getElementsByClassName("btOpcionesEventos")[1].style.display = "inline";
 		res.getElementsByClassName("btOpcionesEventos")[2].style.display = "inline";
@@ -127,7 +137,6 @@ function llenarInfoCompleta(posVector, elemento){
 
 function subscribirUsuario(evento, posVector, elemento){
 	//var pkUsuario = retornarUsuarioConcurrente();
-	var pkUsuario = "pepito@pp com";
 	suscribirUsuarioEvento(pkUsuario, evento, function(value, result){
 		if(result == false){
 			//Mensaje de error
@@ -196,11 +205,21 @@ function mainDeporte(xdeporte){
 }
 
 function mainMisEventos(){
-	var eventosIniciales = retornarEventos("Natacion");
-	setTimeout(function (){
-		var arrEventoOrdenado = ordenarEventoFecha(eventosIniciales);
-		addListaEventoAlFinal(arrEventoOrdenado);
-	}, 2500);
+	pkUsuario = "a@a com";
+	useEventosSuscritos(pkUsuario,function(value, result){
+		if(result == null){
+			return;
+		}
+		for (deporte in result) {
+			for (pkFire in result[deporte]) {
+				var pkEvento = result[deporte][pkFire].pkEvento;
+				var refEvento = "Eventos/"+deporte+"/"+pkEvento;
+				usarJsonReferencia(refEvento, function(value, result){
+					agregarAlFinalEvento(result.informacion);
+				});
+			}
+		}
+	});
 
 }
 

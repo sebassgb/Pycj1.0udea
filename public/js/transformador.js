@@ -56,6 +56,7 @@ function JsonToPkEvento(json){
 }
 
 function pkEventoToJson(pkEvento){
+	console.log(pkEvento);
 	var arrEv = pkEvento.split(" ");
 	var resJson = {
 		creador : arrEv[0].toString()+" "+arrEv[1].toString(),
@@ -86,18 +87,18 @@ function colocarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de
 
 function identificador(json,pK){  // Metodo que identifica si el usuario es el creador del evento, participante o nada.
     if(json.creador == pK){
-        return "creador";
-    }if(esParticipante(json)==true){
+        return "Admin";
+    }if(esParticipante(json, pK)==true){
         
-        return "participante";
+        return "Suscrito";
     }else{
-        return "nada";
+        return "";
     }
  
 }
 
-
-function esParticipante(json){ // Metodo auxiliar para saber si es participante
+function esParticipante(json, pK){ // Metodo auxiliar para saber si es participante
+    //console.log(json.participantes);
     for(var i in json.participantes){ 
         if(json.participantes[i].pkUsuario == pK){
            return true;

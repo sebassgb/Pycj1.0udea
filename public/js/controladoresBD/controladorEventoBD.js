@@ -8,10 +8,11 @@ function usarValidacionRelacionEvento(pkUsuario, evento, callback){
 
 		yaSeValido = true;
 		var useSoloUnaVes = 0;
-		useEventosSuscritos(pkUsuario, function(value, result){
+		useEventosSuscritosPk(pkUsuario, function(value, result){
 		if(useSoloUnaVes == 0){
 				useSoloUnaVes = 1;
 				for(j in result){
+					console.log(result[j]);
 					var auxEvento = pkEventoToJson(result[j]);
 					if(evento.year == auxEvento.year &&
 						evento.mes == auxEvento.mes &&
