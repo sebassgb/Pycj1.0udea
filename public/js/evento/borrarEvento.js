@@ -1,13 +1,13 @@
-
-/*var reevento="Eventos/Ciclismo/a@a com 01 02 2017 4 55/";
+/*
+var reevento="Eventos/Baloncesto/pepito@pp com 01 02 2017 11 21/";
 var js;
 usarJsonReferencia(reevento,function(value,result){
 	js=result;
 	var t=borrarEvento(js);
 	//console.log(t);
 
-});*/
-
+});
+*/
 
 
 
