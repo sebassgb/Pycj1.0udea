@@ -82,6 +82,39 @@ function quitarEventoDeListaEventosSuscritos(pkUsuario,evento){
 }
 
 
+function quitarEventoDeListaEventosCreados(pkUsuario,evento){
+	var referenciaevento="usuarios/"+pkUsuario+"/"+"eventosCreados/"+evento.deporte;
+	usarJsonReferencia2(referenciaevento,function(value,result,firebaseKey){
+
+		var eventosAsistenciaDeporteX=result;
+		var fireBaseKey=firebaseKey;
+		var eventoBorrar=JsonToPkEvento(evento);
+
+		
+		for(k in eventosAsistenciaDeporteX){
+			var event=eventosAsistenciaDeporteX[k];
+
+			if(event==eventoBorrar){
+				var referenciaEventoSuscritoBorrar="usuarios/"+pkUsuario+"/"+"eventosAsistencia/"+evento.deporte+"/"+fireBaseKey+"/pkEvento";
+				database.ref(referenciaEventoSuscritoBorrar).remove();
+				//alert("Te has retirado del evento ti@");
+				break;
+			}else{
+				//alert("Evento no se encontro en la lista de eventos suscritos");
+			}
+
+		}
+
+	});
+
+
+}
+
+
+
+
+
+
 function usarJsonReferencia2(refStr, callback,firebaseKey){
     var referencia = database.ref(refStr);
     referencia.on('child_added', function(snapshot) {//Funcion asincrona
