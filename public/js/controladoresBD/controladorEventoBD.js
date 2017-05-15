@@ -3,7 +3,6 @@ var yaSeValido = false;
 // NOTA : el que necesite utilizar este metodo debe colocar la varibale yaSeValido=false;
 
 function usarValidacionRelacionEvento(pkUsuario, evento, callback){
-
 	if(yaSeValido == false){
 
 		yaSeValido = true;
@@ -12,7 +11,6 @@ function usarValidacionRelacionEvento(pkUsuario, evento, callback){
 		if(useSoloUnaVes == 0){
 				useSoloUnaVes = 1;
 				for(j in result){
-					console.log(result[j]);
 					var auxEvento = pkEventoToJson(result[j]);
 					if(evento.year == auxEvento.year &&
 						evento.mes == auxEvento.mes &&

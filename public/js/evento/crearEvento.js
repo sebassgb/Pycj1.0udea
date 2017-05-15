@@ -3,7 +3,7 @@
 function crearEventoBasico(creador,eventoo) {
 
 
-	creador="a@a com";
+	creador="tripo@tri com";
 	// validamos que pueda crear el evento por su disponibilidad
 
 

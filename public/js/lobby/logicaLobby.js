@@ -23,7 +23,7 @@ var json = {//Formato del Json Evento, para hacer pruebas
 }
 
 ///
-var pkUsuario = "ninja@ni com";
+pkUsuario = "tripo@tri com";
 ///
 
 var eventos = [];//Guarda los eventos que se ven en pantalla
@@ -40,8 +40,8 @@ divEvento.style.visibility = "visible";//Hecho para que los eventos a incertar s
 var divEventoCompleto = document.getElementById("divVistaEventoNoRelacionado");//captura la plantilla de evento completo
 divLobby.removeChild(divEventoCompleto);//borrar la plantilla
 divEventoCompleto.style.visibility = "visible";//Hecho para que los eventos a incertar se vean y las plantillas inicialmente no
-
 var clickDiv;
+var pkEventos = [];
 
 
 
@@ -63,11 +63,18 @@ function agregarAlInicioEvento(infoEvento){
 		clickDiv = newEvento;
 	}
 	eventos[eventos.length] = infoEvento;
+	pkEventos[eventos.length] = JsonToPkEvento(infoEvento);
 }
 
 function agregarAlFinalEvento(infoEvento){
 	var relacionx = identificador(infoEvento,pkUsuario);
 	infoEvento.relacion = relacionx;
+	var pkEvento = JsonToPkEvento(infoEvento);
+	for (var i = 0; i < pkEventos.length; i++) {
+		if(pkEvento == pkEventos[i]){
+			return;
+		}
+	}
 	var newEvento = llenarInfoBase(infoEvento, divEvento.cloneNode(true));
 	divLobby.appendChild(newEvento);
 
@@ -78,6 +85,7 @@ function agregarAlFinalEvento(infoEvento){
 		clickDiv = newEvento;
 	}
 	eventos[eventos.length] = infoEvento;
+	pkEventos[eventos.length] = pkEvento;
 }
 
 function addListaEventoAlFinal(listaEventos){
@@ -150,13 +158,17 @@ function borrarEventoV(evento, posVector, divCompleto){
 	//var pkUsuario = retornarUsuarioConcurrente();
 	console.log(eventos[posVector]+"  "+pkUsuario);
 	borrarEvento(eventos[posVector]);
-	alert("funciono");
+
+	funcionCerrarEvento();
+	divLobby.removeChild(clickDiv);
+
 }
 
 function salirEvento(evento, posVector, divCompleto){
 	//var pkUsuario = retornarUsuarioConcurrente();
-	console.log(eventos[posVector]+"  "+pkUsuario)
 	salirDelEvento(pkUsuario,eventos[posVector]);
+	funcionCerrarEvento();
+    //setTimeout(location.reload(true), 100000);
 }
 
 function subscribirUsuario(evento, posVector, divCompleto){
@@ -173,6 +185,8 @@ function subscribirUsuario(evento, posVector, divCompleto){
 		divCompleto.getElementsByClassName("respuestanombreInfo")[1].innerHTML = eventos[posVector].cuposLlenos+"/"+eventos[posVector].cuposTotales;
 		clickDiv.getElementsByClassName("respuestanombreInfo")[1].innerHTML = eventos[posVector].cuposLlenos+"/"+eventos[posVector].cuposTotales;
 		xya();
+		//setTimeout(location.reload(true), 100000);
+		
 	});
 
 }
@@ -221,19 +235,27 @@ function mainLobby(){
 }
 //asdsa
 function mainDeporte(xdeporte){
-	retornaEventos(xdeporte,function(value,result){
+	var depVec = xdeporte.split("%20");
+	var dep = depVec[0];
+	for (var i = 1; i<depVec.length;i++) {
+		dep = dep+" "+depVec[i];
+	}
+	console.log(dep);
+	retornaEventos(dep,function(value,result){
 	    for(l in result){
 	        agregarAlFinalEvento(result[l]);; // la informacion que se desee
 	    }
 	});
 }
 
+
+var noActualizar = true;
 function mainMisEventos(){
-	pkUsuario = "a@a com";
 	useEventosSuscritos(pkUsuario,function(value, result){
 		if(result == null){
 			return;
 		}
+		
 		for (deporte in result) {
 			for (pkFire in result[deporte]) {
 				var pkEvento = result[deporte][pkFire].pkEvento;
@@ -243,6 +265,7 @@ function mainMisEventos(){
 				});
 			}
 		}
+		return;
 	});
 
 }

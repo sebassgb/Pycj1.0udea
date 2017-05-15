@@ -59,7 +59,7 @@ function eliminarPkusuarioListaParticipantes(pkUsuarioELiminar,evento){
 			bpartipante=true;
 			break;
 		}else{
-			alert("ya te saliste de  este evento");
+			//alert("ya te saliste de  este evento");
 
 		}
 	}
@@ -69,7 +69,6 @@ function eliminarPkusuarioListaParticipantes(pkUsuarioELiminar,evento){
 function quitarEventoDeListaEventosSuscritos(pkUsuario,evento){
 	var referenciaevento="usuarios/"+pkUsuario+"/"+"eventosAsistencia/"+evento.deporte;
 	usarJsonReferencia2(referenciaevento,function(value,result,firebaseKey){
-
 		var eventosAsistenciaDeporteX=result;
 		var fireBaseKey=firebaseKey;
 		var eventoBorrar=JsonToPkEvento(evento);
@@ -108,7 +107,7 @@ function quitarEventoDeListaEventosCreados(pkUsuario,evento){
 			var event=eventosAsistenciaDeporteX[k];
 
 			if(event==eventoBorrar){
-				var referenciaEventoSuscritoBorrar="usuarios/"+pkUsuario+"/"+"eventosAsistencia/"+evento.deporte+"/"+fireBaseKey+"/pkEvento";
+				var referenciaEventoSuscritoBorrar="usuarios/"+pkUsuario+"/"+"eventosCreados/"+evento.deporte+"/"+fireBaseKey+"/pkEvento";
 				database.ref(referenciaEventoSuscritoBorrar).remove();
 				//alert("Te has retirado del evento ti@");
 				break;

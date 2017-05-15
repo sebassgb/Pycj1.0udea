@@ -56,6 +56,7 @@ function guardeDatos(){/*Esta función al darle click al boton guardar del html 
 
       pkUsuario =user.email;
       pkUsuario=quitarPuntoCorreo(pkUsuario);
+      pkUsuario = "tripo@tri com";
       var evento= {//JSON que contiene datos principales del evento
         creador:pkUsuario,
         nombre: nomEvento,
