@@ -5,14 +5,14 @@
 *actualizar html actual
 
 */
-
+ /*
 var reevento="Eventos/Judo/a@a com 11 02 2017 1 50/";
 var js;
 usarJsonReferencia(reevento,function(value,result){
 	js=result;
 	salirDelEvento("pepito@pp com",js);
 
-});
+});*/
 
 var bpartipante=false;
 
