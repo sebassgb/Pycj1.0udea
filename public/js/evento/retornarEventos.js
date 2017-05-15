@@ -35,6 +35,28 @@ function retornarEventos(nameDeporte){
 
 
 
+function usarJsonReferencia(refStr, callback){
+    var referencia = database.ref(refStr);
+    referencia.on('value', function(snapshot) {//Funcion asincrona
+        callback(0, snapshot.val());//Se ejecuta callback para usar la referencia cuando se tenga
+    });
+}
+
+
+//************************prueba de manera no asisncrona**********************************************************
+
+
+
+
+/*pruebaretornarEventos("Buceo Pulmon Libre",function(value,result){
+    console.log("holi");
+    console.log(result);
+
+});
+
+*/
+
+
 
 function pruebaretornarEventos(nameDeporte,callback){
 
@@ -48,13 +70,13 @@ function pruebaretornarEventos(nameDeporte,callback){
          // funcion de jquery que sirve para recorrer vectores es lo mismo que un for o while
         // recibe dos paramentros el array y la funcion a ejecutar con el array
         var i=0;
+        console.log(result);
         $.each(result,function(indice,valor)
         {
             var valores=valor.informacion;
             todosLosEventosDelDeporte[i]=valor.informacion;   
             i++;
         });
-        // funciona de error  
 
     });
 
@@ -81,13 +103,6 @@ function useEventosCreados(pkusuario,callback) {
 }
 
 
-
-function usarJsonReferencia(refStr, callback){
-    var referencia = database.ref(refStr);
-    referencia.on('value', function(snapshot) {//Funcion asincrona
-        callback(0, snapshot.val());//Se ejecuta callback para usar la referencia cuando se tenga
-    });
-}
 
 
 
