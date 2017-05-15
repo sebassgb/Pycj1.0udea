@@ -127,7 +127,7 @@ function llenarInfoCompleta(posVector, elemento){
 
 function subscribirUsuario(evento, posVector, elemento){
 	//var pkUsuario = retornarUsuarioConcurrente();
-	var pkUsuario = "hp@hp com";
+	var pkUsuario = "pepito@pp com";
 	suscribirUsuarioEvento(pkUsuario, evento, function(value, result){
 		if(result == false){
 			//Mensaje de error
@@ -219,7 +219,7 @@ function main(){
 	}	
 }
 
-mainDeporte("Taekwondo");
+main();
 
 
 

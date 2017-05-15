@@ -9,7 +9,6 @@ function usarValidacionRelacionEvento(pkUsuario, evento, callback){
 		yaSeValido = true;
 		var useSoloUnaVes = 0;
 		useEventosSuscritos(pkUsuario, function(value, result){
-
 		if(useSoloUnaVes == 0){
 				useSoloUnaVes = 1;
 				for(j in result){
@@ -54,9 +53,7 @@ function suscribirUsuarioEvento(pkUsuario, evento, callback){
 	//la funcion callback
 	usarJsonReferencia(referencia, function(value, result){
 //Eventos/Judo/ninja@ni com 11 02 2017 1 50/informacion
-
 		if(parseInt(result.cuposTotales) > parseInt(result.cuposLlenos)){
-			
 			var newEvento = result;
 
 			usarValidacionRelacionEvento(pkUsuario, newEvento, function(value, result){
