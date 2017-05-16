@@ -127,10 +127,10 @@ function llenarInfoCompleta(posVector, elemento){
 	divLobby.appendChild(res);
 	console.log(xJson.relacion);
 	if (xJson.relacion == "Admin") {
-		res.getElementsByClassName("btOpcionesEventos")[1].style.display = "inline";
+		//res.getElementsByClassName("btOpcionesEventos")[1].style.display = "inline";
 		res.getElementsByClassName("btOpcionesEventos")[2].style.display = "inline";
-		var l = document.getElementById("refEditarEvento");
-		l.href = "http://localhost:8080/modificacionEvento/"+xJson.deporte+"/"+JsonToPkEvento(xJson);
+		//var l = document.getElementById("refEditarEvento");
+		//l.href = "http://localhost:8080/modificacionEvento/"+xJson.deporte+"/"+JsonToPkEvento(xJson);
 		var j = document.getElementById("btBorrarEvento");//Borrar evento
 		j.onclick = function(){
 			console.log(eventos[posVector]);
@@ -173,7 +173,11 @@ function salirEvento(evento, posVector, divCompleto){
 	//var pkUsuario = retornarUsuarioConcurrente();
 	salirDelEvento(pkUsuario,eventos[posVector]);
 	funcionCerrarEvento();
-    //setTimeout(location.reload(true), 100000);
+    clickDiv.getElementsByClassName("labelRelacion")[0].innerHTML = "";
+    var cuposLLenosx = parseInt(evento.cuposLlenos) - 1;
+    clickDiv.getElementsByClassName("respuestanombreInfo")[1].innerHTML = cuposLLenosx.toString()+"/"+evento.cuposTotales;
+    var posVector = clickDiv.getElementsByClassName("labelId")[0].innerHTML;
+    eventos[posVector].relacion = "";
 }
 
 function subscribirUsuario(evento, posVector, divCompleto){
@@ -181,15 +185,14 @@ function subscribirUsuario(evento, posVector, divCompleto){
 	suscribirUsuarioEvento(pkUsuario, evento, function(value, result){
 		if(result == false){
 			//Mensaje de error
+			alert("No puedes suscribirte en este evento")
 			console.log("NO LO REGISTRO");
 			return;
 		}
 		//Mensaje de exito
 		console.log("LO REGISTRO");
-		eventos[posVector].cuposLlenos = parseInt(eventos[posVector].cuposLlenos)+1;
-		divCompleto.getElementsByClassName("respuestanombreInfo")[1].innerHTML = eventos[posVector].cuposLlenos+"/"+eventos[posVector].cuposTotales;
-		clickDiv.getElementsByClassName("respuestanombreInfo")[1].innerHTML = eventos[posVector].cuposLlenos+"/"+eventos[posVector].cuposTotales;
-		xya();
+		alert("Se ha suscrito correctamente");
+		location.reload(true);
 		//setTimeout(location.reload(true), 100000);
 		
 	});

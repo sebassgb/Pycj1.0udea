@@ -12,7 +12,7 @@ function agregarParticipantes()//Recuperamos el texto del elemento a
         {
           var li=document.createElement('li');
           li.id=nuevoLi;
-          li.innerHTML='<div onclick="eliminar(this)"><img src="../../../src/'+nuevoLi+'.png"></div>';
+          li.innerHTML='<div onclick="eliminar(this)"><img src="../../../../src/'+nuevoLi+'.png"></div>';
           document.getElementById("participantes").appendChild(li);
 
         }

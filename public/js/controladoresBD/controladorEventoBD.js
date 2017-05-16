@@ -81,7 +81,7 @@ function suscribirUsuarioEvento(pkUsuario, evento, callback){
 					if (machete == 3) {
 						machete = -1;
 						//alert("salir");
-						callback(0, true);
+						callback(newEvento, true);
 					}		
 					if(machete == -1){
 						//alert("termina");
