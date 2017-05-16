@@ -40,16 +40,16 @@ function colocarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de
 
 function usarDeportesFavoritos(callback){//Retorna un vector con los deportes favoritos
  var listaFavsDefinitiva=[];//Vector que retorna favoritos
-console.log("paso");
+//console.log("paso");
 retornarUsuarioConcurrente(function(value,result){
 var referencia = "usuarios/"+result+"/"+"deportesFavoritos";
-console.log(referencia);
+//console.log(referencia);
 var bdEventos=database.ref(referencia);
   bdEventos.on('value',function(datos){
         //la primera funcion recorremos la lista de usuarios
         var datos =  datos.val();// obtenemos los valores raices del nodo usuarios
         if(typeof(datos) == "string"){
-          console.log(datos);
+          //console.log(datos);
           callback(0, listaFavsDefinitiva);
           return;
         }

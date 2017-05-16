@@ -34,7 +34,6 @@ var database = firebase.database(); // objeto para hacer uso de la bd
 formButton.addEventListener('click', e => {
 
  // capturamos los datos del formulario para registrar el usuario        
-
      unombre = document.getElementById("txtnombre").value;
      ucorreo= document.getElementById("txtcorreo").value.toString();
 
@@ -48,12 +47,9 @@ formButton.addEventListener('click', e => {
         
     if(validarcamposformulario()===false){ // validamos que los campos del formulario sea valido 
         crearusuario();// creamos el usuario, luego de las validaciones
-       
+
     } 
-
-
-
-           
+    
         
   }); 
 
