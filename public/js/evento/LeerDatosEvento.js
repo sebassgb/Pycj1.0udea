@@ -19,9 +19,8 @@ function genero(gender){
   Genero = gender;
 }
 function guardeDatos(){/*Esta función al darle click al boton guardar del html me recupera datos y los guarda en un JSON*/
-
     nomEvento =  document.getElementById("nomEvento").value;
-    deporEvento =  document.getElementById("deporEvento").value;
+    deporEvento =  (document.getElementById("deporEvento").value).replace(" ","_");
     numPersonas =  document.getElementById("numPersonas").value;
     dia=  document.getElementById("dia").value;
     mes=  document.getElementById("mes").value;
@@ -57,7 +56,6 @@ function guardeDatos(){/*Esta función al darle click al boton guardar del html 
         minuto: minuto,
         }
         //participantes:{pkUsuario:pkUsuario} //cuando se crea un evento el unico participante en el momento es el creador de este
-
       crearEventoBasico(pkUsuario,evento);
       // creamos el evento en la base de datos
   });}
@@ -81,13 +79,14 @@ function colocarPuntoCorreo(mcorreo){ // funcion encargada de remplazar los . de
 }
 
 function validarDatos(){
-  if(numPersonas>99){alert("Error en número de personas");return false;}
-  if(dia<1||dia>31){alert("Error en día");return false;}
-  if(mes<1||mes>12){alert("Error en mes");return false;}
-  if(fecha.getFullYear!==year){alert("Error en año");return false;}
-  if(hora>24){alert("Error en hora");return false;}
-  if(minuto>59){alert("Error en minuto");return false;}
-  if(edadMin<0||edadMin>=edadMax){alert("Error en edad Mínima");return false;}
-  if(edadMax<=edadMin||edadMax>99){alert("Error en edad Máxima");return false;}
+  if(numPersonas>99){console.log("Error en número de personas");return false;}
+  if(dia<1||dia>31){console.log("Error en día");return false;}
+  if(mes<1||mes>12){console.log("Error en mes");return false;}
+  if(fecha.getFullYear().toString()!=year){console.log("Error en año");return false;}
+  if(hora>24){console.log("Error en hora");return false;}
+  if(minuto>59){console.log("Error en minuto");return false;}
+  if(edadMin<0){console.log("Error en edad Mínima");return false;}
+  if(parseInt(edadMin)>=parseInt(edadMax)){console.log("Error en edad Mínima");return false;}
+  if(parseInt(edadMax)<=parseInt(edadMin)||edadMax>99){console.log("Error en edad Máxima");return false;}
   return true;
 }
