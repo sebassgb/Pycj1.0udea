@@ -259,7 +259,6 @@ function mainDeporte(xdeporte){
 	for (var i = 1; i<depVec.length;i++) {
 		dep = dep+" "+depVec[i];
 	}
-	console.log(dep);
 	retornaEventos(dep,function(value,result){
 	    for(l in result){
 	        agregarAlFinalEvento(result[l]);; // la informacion que se desee
@@ -295,10 +294,10 @@ function main(){
 	var URLactual = window.location.toString();
 	var entradaVec = URLactual.split("/");
 	var entrada = entradaVec[entradaVec.length-1];
+	entrada = entrada.replace(".html","");
 	retornarUsuarioConcurrente(function(value,result){
 		pkUsuario = result;
-		console.log(pkUsuario);
-		if(entrada == "lobby"){
+		if(entrada == "Lobby"){
 			mainLobby();
 		}else{
 			if(entrada == "misEventos"){
@@ -310,7 +309,6 @@ function main(){
 	});
 		
 }
-
 main();
 
 
