@@ -294,7 +294,8 @@ function main(){
 	var URLactual = window.location.toString();
 	var entradaVec = URLactual.split("/");
 	var entrada = entradaVec[entradaVec.length-1];
-	entrada = entrada.replace(".html","");
+	entrada = entrada.replace(".html#","");
+	entrada = entrada.replace(".html","");	
 	retornarUsuarioConcurrente(function(value,result){
 		pkUsuario = result;
 		if(entrada == "Lobby"){
