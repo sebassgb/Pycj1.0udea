@@ -9,3 +9,8 @@
 
 firebase.initializeApp(config);  // objeto para aceder a la bd
 var database = firebase.database(); // objeto para hacer uso de la bd
+
+
+function cerrarSesion(){
+	firebase.auth().signOut();
+}

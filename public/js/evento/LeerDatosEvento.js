@@ -23,10 +23,30 @@ function guardeDatos(){/*Esta función al darle click al boton guardar del html 
     deporEvento =  (document.getElementById("deporEvento").value).replace(" ","_");
     numPersonas =  document.getElementById("numPersonas").value;
     dia=  document.getElementById("dia").value;
+    dia.replace(" ","");
+    if(dia == ""){
+      dia = 1;
+    }
     mes=  document.getElementById("mes").value;
+    mes.replace(" ","");
+    if(mes == ""){
+      mes = 1;
+    }
     year=  document.getElementById("year").value;
+    year.replace(" ","");
+    if(year == ""){
+      year = 2017;
+    }
     hora =  document.getElementById("hora").value;
+    hora.replace(" ","");
+    if(hora == ""){
+      hora = 1;
+    }
     minuto=  document.getElementById("minuto").value;
+    minuto.replace(" ","");
+    if(minuto == ""){
+      minuto = 1;
+    }
     lugar=  document.getElementById("lugar").value;
     edadMin =  document.getElementById("edadMin").value;
     edadMax =  document.getElementById("edadMax").value;

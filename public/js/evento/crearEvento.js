@@ -55,8 +55,8 @@ function crearEventoBasico(creador,eventoo) {
 				database.ref(referenciaMiseventos).push(eventocreado); // ingreso la pk de los eventos
 
 				alert("Exito en la creacion del evento");
-
-			}
+				location.href ="../../drawer/misEventos.html";
+			}	
 		});	
 	});
 }
