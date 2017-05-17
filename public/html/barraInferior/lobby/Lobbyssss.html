@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Cotejo</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+	<link href="../../../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../../css/basicoResponsivo.css" rel="stylesheet" rel="stylesheet"><!--Basico para barras-->
+  <link href="../../../css/estiloBarras.css" rel="stylesheet">
+  <link href="../../../css/barraInferior/estiloLobby.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+	<script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script> 
+
+	<link type="text/css" href="../../../css/estiloBarras.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../../../css/estiloVistaEvento.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="../../../css/estiloVistaEventoNoSuscrito.css">
+	
+	
+</head>
+<body>
+
+	<!--BARRA SUPERIOR-->
+	<div id="divCierreTop" style="display: none">
+ 	</div>
+ 	<div id="divCierreBottom" style="display: none">
+ 	</div>
+ 	<div id="divCierreRigth" style="display: none">
+ 	</div>
+ 	<div id="divCierreLeft" style="display: none">
+ 	</div> 
+  <div id="barrasFinish">
+  <header>
+        <nav id="navCorredizo">
+             <ul>
+                <section id="Slogo"><img class ="img-responsive center-block" id="logo" src="../../../src/Logo-Gris.png"></section>
+                <li><a href="../../drawer/Perfil.html">Perfil</a></li>
+                <li><a href="../../drawer/misEventos.html">Mis Eventos</a></li>
+                <li><a href="../../drawer/Perfil.html">Configuración de cuenta</a></li>
+                <li><a href="../../drawer/creditos.html">Creditos</a></li>
+                <li><a href="../../../index.html">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+
+   <nav id="navDer"></nav><!--Utilizado para que el slider se pueda cerrar afuera del mismo-->
+  <div class="row" id="superior">
+     <div class="menu_bar">
+      <div id="tap" class="col-xs-3 col-sm3 col-md-3 col-lg-3 ">
+         <a href="#"><img class ="img-responsive center-block .menu_bar2" src="../../../src/rayas.png"></a>
+      </div>
+      </div>
+
+      <div class="col-xs-3 col-sm3 col-md-3 col-lg-3">
+           <label for="labelUbicacion" ></label>
+      </div>
+      <div id="tap" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+           <a href="#"><img class ="img-responsive center-block" src="../../../src/lupa.png"></a>
+      </div>
+
+      <div id="tap" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+           <a href="#"><img class ="img-responsive center-block" src="../../../src/campana.png"></a>
+      </div>
+    </div>
+
+	</header>
+ <!--AQUI VA TODO EL CONTENIDO--> 
+	<div id="divLobby" style="padding-top: 9vh; padding-left: 3vw; padding-right: 3vw;">
+		
+		<div class='divInfoEvento' style="visibility: hidden">
+			<div class='eventoInfo'>
+				<div class='eventoInfoDiv'>
+					<div class='divsInfo'>
+						<label class='enunciadoDeporteInfo'>Deporte: </label>
+						<label class='respuestaDeporteInfo'> tenis de mesa </label>
+					</div>
+					<div class='divsInfo'>
+						<label class='enunciadoNombreInfo'>Nombre: </label>
+						<label class='respuestanombreInfo'> Cebollitas cracks </label>
+					</div>
+					<div class='divsInfo'>
+						<label class='enunciadoNombreInfo'>Cupos: </label>
+						<label class='respuestanombreInfo'> '2' </label>
+					</div>
+				</div>
+				
+				<div class='eventoInfoEncuentro'>
+					<div class='divFecha'>
+						<div class='imgLogo'>
+							<!--<img src='calendarioLogo.png'>-->
+							<center>
+								<img src='../../../src/calendarioLogo.png'>
+							</center>
+						</div>
+						<label class='labelFecha'>'02/04/2017'</label>
+					</div>
+					<div class='divHora'>
+						<div class='imgLogo'>
+							<!--<img src='relojLogo.png'>-->
+							<center>
+								<img src='../../../src/relojLogo.png'>
+							</center>
+							
+						</div>
+						<label class='labelHora'>15:00</label>
+					</div>
+					<div class='divLocalizacion'>
+						<div class='imgLogo'>
+							<!--<img src='posicionLogo.png'>-->
+							<center>
+								<img src='../../../src/posicionLogo.png'>
+							</center>
+						</div>
+						<label class='labelLocalizacion'>Salón tenis coliseo UdeA</label>
+					</div>
+				</div>
+			</div>
+			<div class='divEventoImg'>
+				<div class='eventoImg'>
+					<!--<img src='logoTenisMesa.png'>-->
+					<center>
+						<img src='../../../src/tenis.png'>
+					</center>					
+				</div>
+				<label class="labelRelacion">Admin</label>
+				<label class="labelId" style="display: none"></label>
+			</div>
+		</div>
+
+
+		<!-- Evento completo -->
+
+		<div id="divVistaEventoNoRelacionado" style="visibility: hidden">
+			<div class="divInfoEvento">
+				<div class="eventoInfo">
+					<div class="eventoInfoDiv">
+						<div class="divsInfo">
+							<label class="enunciadoDeporteInfo">Deporte: </label>
+							<label class="respuestaDeporteInfo"> "tenis de mesa" </label>
+						</div>
+						<div class="divsInfo">
+							<label class="enunciadoNombreInfo">Nombre: </label>
+							<label class="respuestanombreInfo"> "Cebollitas cracks" </label>
+						</div>
+						<div class="divsInfo">
+							<label class="enunciadoNombreInfo">Cupos: </label>
+							<label class="respuestanombreInfo"> "2" </label>
+						</div>
+					</div>
+					
+					<div class="eventoInfoEncuentro">
+						<div class="divFecha">
+							<div class="imgLogo">
+								<!--<img src="calendarioLogo.png">-->
+								<center>
+									<img src="../../../src/calendarioLogo.png">
+								</center>
+							</div>
+							<label class="labelFecha">"02/04/2017"</label>
+						</div>
+						<div class="divHora">
+							<div class="imgLogo">
+								<!--<img src="relojLogo.png">-->
+								<center>
+									<img src="../../../src/relojLogo.png">
+								</center>
+								
+							</div>
+							<label class="labelHora">15:00</label>
+						</div>
+						<div class="divLocalizacion">
+							<div class="imgLogo">
+								<!--<img src="posicionLogo.png">-->
+								<center>
+									<img src="../../../src/posicionLogo.png">
+								</center>
+							</div>
+							<label class="labelLocalizacion">Salón tenis coliseo UdeA</label>
+						</div>
+					</div>
+				</div>
+				<div class="divEventoImg">
+					<div class="eventoImg">
+						<!--<img src="logoTenisMesa.png">-->
+						<center>
+							<img src="../../../src/logoTenisMesa.png">
+						</center>
+						
+					</div>
+					<label class="labelRelacion">Admin</label>
+				</div>
+			</div>
+			<div class="divRestriccion">
+				<label class="lbRestriccion">Genero: </label>
+				<label class="resRestriccion">"Mixto"</label>
+				<label class="lbRestriccion">Edad: </label>
+				<label class="resRestriccion">"15-60"</label>
+			</div>
+			<div class="divParticipantes">
+				<label class="lbParticipantes">Participantes</label>
+				<div class="divParticipantesFotos">
+				<!--Parte de sabastian ;V-->
+					<ul id="participantes">
+					  <li id="perfil"><div><img src="../../../src/perfil.png"></img></div></li>
+					</ul>
+				</div>
+			</div>
+			<div class="divInfoAdicional">
+				<div class="divNotas" id="notas">
+					<label class="lbParticipantes">Notas</label>
+
+					<!--Esto no va ;v-->
+					<textarea name="comentarios" id="editeNota" rows="10" cols="40" placeholder="Escribe los comentarios"></textarea>
+				</div>
+			</div>
+			<div class="divBotones">
+				<input type="submit" id="btSuscribirse" name="suscrpcion" class="btOpcionesEventos" value="Suscribirme">
+				<a href="" id="refEditarEvento">
+					<input type="submit" id="btEditar" class="btOpcionesEventos" value="Editar">
+				</a>
+				<input type="submit" id="btBorrarEvento" class="btOpcionesEventos" value="Eliminar evento">
+				<input type="submit" id="btSalirEvento" value="SalirEvento" class="btOpcionesEventos" value="Salir del evento">
+				<input type="submit" id="btAbe" class="btOpcionesEventos" value="Cerrar">
+			</div>
+		</div>
+
+	</div>
+
+<!--BARRA INFERIOR-->
+<footer>
+   <div class="row" id="inferior">
+      <div id="tap" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <a href="../../barraInferior/lobby/Lobby.html"><img class ="img-responsive center-block" id="tap" src="../../../src/casa.png"></a>
+      </div>
+      <div id="tap" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+       <a href="../../barraInferior/evento/creaEvento.html"><img class ="img-responsive center-block" id="tap" src="../../../src/mas.png"></a>
+      </div>
+      <div id="tap" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+       <a href="../../barraInferior/ojo/Deportes.html"><img class ="img-responsive center-block" id="tap" src="../../../src/ojo.png"></a>
+      </div>
+  </div>
+</footer>
+</div>
+	<script src="../../../js/jquery/jquery-1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../js/transformador.js"></script>
+	<script type="text/javascript" src="../../../js/configuracionFirebase.js"></script>
+	<script type="text/javascript" src="../../../js/controladoresBD/controladorUsuarioBD.js"></script>
+	<script type="text/javascript" src="../../../js/evento/eventoNoSuscrito.js"></script>
+	<script type="text/javascript" src="../../../js/evento/retornarEventos.js"></script>
+	<script type="text/javascript" src="../../../js/evento/eventosSuscritosYCreados.js"></script>
+	<script type="text/javascript" src="../../../js/evento/desuscribirme.js"></script>
+	<script type="text/javascript" src="../../../js/evento/borrarEvento.js"></script>
+	<script type="text/javascript" src="../../../js/controladoresBD/controladorEventoBD.js"></script>
+	
+	<script type="text/javascript" src="../../../js/lobby/logicaLobby.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../../../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../../../js/menu.js"></script>
+    <script src="../../../js/fastclick.js"></script>
+</body>
+</html>
