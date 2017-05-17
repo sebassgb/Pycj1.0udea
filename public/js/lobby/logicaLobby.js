@@ -33,6 +33,7 @@ var json = {//Formato del Json Evento, para hacer pruebas
 
 var eventos = [];//Guarda los eventos que se ven en pantalla
 
+var tipoDePagina; 
 
 function xya(){
 	agregarParticipantes();
@@ -115,7 +116,15 @@ function llenarInfoBase(xJson, elemento){
 	elemento.getElementsByClassName("labelHora")[0].innerHTML = xJson.hora+": "+xJson.minuto;
 	elemento.getElementsByClassName("labelLocalizacion")[0].innerHTML = xJson.lugar;
 	elemento.getElementsByClassName("labelRelacion")[0].innerHTML = xJson.relacion;
-
+	if(tipoDePagina == "Lobby"){
+		(elemento.getElementsByClassName("eventoImg")[0]).getElementsByTagName("img")[0].src = "../../../src/"+xJson.deporte+".png";
+		}else{
+			if(tipoDePagina == "misEventos"){
+				(elemento.getElementsByClassName("eventoImg")[0]).getElementsByTagName("img")[0].src = "../../src/"+xJson.deporte+".png";
+			}else{
+				(elemento.getElementsByClassName("eventoImg")[0]).getElementsByTagName("img")[0].src = "../../../../src/"+xJson.deporte+".png";
+			}
+		}
 	return elemento;
 }
 
@@ -299,6 +308,7 @@ function main(){
 	var entrada = entradaVec[entradaVec.length-1];
 	entrada = entrada.replace(".html#","");
 	entrada = entrada.replace(".html","");	
+	tipoDePagina = entrada;
 	retornarUsuarioConcurrente(function(value,result){
 		pkUsuario = result;
 		if(entrada == "Lobby"){
